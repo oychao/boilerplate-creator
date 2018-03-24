@@ -1,0 +1,29 @@
+{
+  "name": "boilerplate",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Ouyang Chao <chao@ouyang.io>",
+  "license": "MIT",
+  "repository": "oychao/boilerplate",
+  "description": "a cli tool",
+  "scripts": {
+    "build": "./node_modules/.bin/rollup -c && npm link"
+  },
+  "preferGlobal": true,
+  "bin": {
+    "bpcreate": "./bin/bundle.js"
+  },
+  "files": [
+    "LICENSE.d",
+    "bin/",
+    "templates/"
+  ],
+  "devDependencies": {
+    "rollup": "^0.57.1",
+    "rollup-plugin-shebang": "^0.1.4"
+  },
+  "dependencies": {
+    "commander": "^2.15.1",
+    "mkdirp": "^0.5.1"
+  }
+}
