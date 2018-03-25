@@ -20,10 +20,13 @@
   ],
   "devDependencies": {
     "rollup": "^0.57.1",
+    "rollup-plugin-json": "^2.3.0",
     "rollup-plugin-shebang": "^0.1.4"
   },
   "dependencies": {
     "commander": "^2.15.1",
-    "mkdirp": "^0.5.1"
+    "minimatch": "^3.0.4",
+    "mkdirp": "^0.5.1",
+    "ncp": "^2.0.0"
   }
 }
