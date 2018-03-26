@@ -9,12 +9,12 @@ const TEMPLATE_DIR = path.join(__dirname, '..', 'templates');
 
 const write = (file, str, mode) => {
     fs.writeFileSync(file, str, { mode: mode || MODE_0666, });
-    console.log(`${chalk.blueBright('   create: ')}${file}`);
+    console.log(`${chalk.cyanBright('   create: ')}${file}`);
 };
 
 const mkdir = (base, dir) => {
     const loc = path.join(base, dir);
-    console.log(`${chalk.blueBright('   create: ')}${loc}${path.sep}`);
+    console.log(`${chalk.cyanBright('   create: ')}${loc}${path.sep}`);
     mkdirp.sync(loc, MODE_0755);
 };
 
