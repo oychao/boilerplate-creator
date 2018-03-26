@@ -1,10 +1,10 @@
 {
-  "name": "boilerplate-generator",
+  "name": "boilerplate-creator",
   "version": "1.0.0",
   "main": "index.js",
   "author": "Ouyang Chao <chao@ouyang.io>",
   "license": "MIT",
-  "repository": "oychao/boilerplate-generator",
+  "repository": "oychao/boilerplate-creator",
   "description": "a cli tool",
   "scripts": {
     "build": "rollup -c && npm link",
@@ -22,6 +22,7 @@
   ],
   "devDependencies": {
     "babel-eslint": "^8.2.2",
+    "chalk": "^2.3.2",
     "eslint": "^4.19.1",
     "eslint-plugin-react": "^7.7.0",
     "rollup": "^0.57.1",

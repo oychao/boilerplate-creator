@@ -21,5 +21,6 @@ export default [{
         'path',
         'commander',
         'mkdirp',
+        'chalk',
     ],
 },];

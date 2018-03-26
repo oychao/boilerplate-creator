@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import mkdirp from 'mkdirp';
+import chalk from 'chalk';
 
 const MODE_0666 = parseInt('0666', 8);
 const MODE_0755 = parseInt('0755', 8);
@@ -8,12 +9,12 @@ const TEMPLATE_DIR = path.join(__dirname, '..', 'templates');
 
 const write = (file, str, mode) => {
     fs.writeFileSync(file, str, { mode: mode || MODE_0666, });
-    console.log(`   \x1b[36mcreate\x1b[0m : ${file}`);
+    console.log(`${chalk.blueBright('   create: ')}${file}`);
 };
 
 const mkdir = (base, dir) => {
     const loc = path.join(base, dir);
-    console.log(`   \x1b[36mcreate\x1b[0m : ${loc}${path.sep}`);
+    console.log(`${chalk.blueBright('   create: ')}${loc}${path.sep}`);
     mkdirp.sync(loc, MODE_0755);
 };
 
