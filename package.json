@@ -1,10 +1,10 @@
 {
-  "name": "boilerplate-creator",
+  "name": "boilerplate-generator",
   "version": "1.0.0",
   "main": "index.js",
   "author": "Ouyang Chao <chao@ouyang.io>",
-  "license": "MIT",
-  "repository": "oychao/boilerplate-creator",
+  "license": "WTFPL",
+  "repository": "oychao/boilerplate-generator",
   "description": "a cli tool",
   "scripts": {
     "build": "rollup -c && npm link",
@@ -13,7 +13,7 @@
   },
   "preferGlobal": true,
   "bin": {
-    "bpc": "./bin/bundle.js"
+    "bpg": "./bin/bundle.js"
   },
   "files": [
     "LICENSE.d",
