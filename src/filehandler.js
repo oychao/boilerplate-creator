@@ -7,7 +7,7 @@ const MODE_0755 = parseInt('0755', 8);
 const TEMPLATE_DIR = path.join(__dirname, '..', 'templates');
 
 const write = (file, str, mode) => {
-    fs.writeFileSync(file, str, { mode: mode || MODE_0666 });
+    fs.writeFileSync(file, str, { mode: mode || MODE_0666, });
     console.log(`   \x1b[36mcreate\x1b[0m : ${file}`);
 };
 

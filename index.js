@@ -3,11 +3,11 @@ import path from 'path';
 import program from 'commander';
 
 import filehandler from './src/filehandler';
-import { version as VERSION } from './package.json';
+import { version as VERSION, } from './package.json';
 
 import p1 from './templates/1/package.json';
 
-const pkgs = { '1': p1 };
+const pkgs = { '1': p1, };
 
 program.name('bpcreate')
     .usage('[dir] [options]')
@@ -26,7 +26,7 @@ Object.values(pkgs).forEach(pkg => {
 
 function main() {
     filehandler.mkdir(projectName, '.');
-    filehandler.copyTemplateMulti('1', `${projectName}`, ['package.json']);
+    filehandler.copyTemplateMulti('1', `${projectName}`, ['package.json',]);
     filehandler.write(`${projectName}/package.json`, `${JSON.stringify(pkgs[program.template], null, 2)}\n`);
 }
 

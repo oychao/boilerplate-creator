@@ -6,7 +6,7 @@ export default [{
     output: [{
         file: 'bin/bundle.js',
         format: 'cjs',
-    }],
+    },],
     plugins: [
         shebang({
             shebang: '#!/usr/bin/env node',
@@ -14,7 +14,7 @@ export default [{
         json({
             preferConst: true,
             indent: '  ',
-        })
+        }),
     ],
     external: [
         'fs',
@@ -22,4 +22,4 @@ export default [{
         'commander',
         'mkdirp',
     ],
-}];
+},];
