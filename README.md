@@ -1,8 +1,13 @@
 # boilerplate-generator
 
-create common boilerplates
+generate common boilerplates
 
 ## Todos
+
+### about project
+
+- [ ] user document
+- [ ] integrate with travis-ci
 
 ### cli
 - [x] basic cli boilerplate
