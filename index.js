@@ -1,14 +1,12 @@
 import fs from 'fs';
 import path from 'path';
 import program from 'commander';
+import jsonfile from 'jsonfile';
 
 import filehandler from './src/filehandler';
 import { version as VERSION, } from './package.json';
 
-import pkgCli from './templates/cli/package.json';
-import pkgReact from './templates/react/package.json';
-
-const pkgs = { cli: pkgCli, react: pkgReact, };
+const TEMPLATE_DIR = path.join(__dirname, '..', 'templates');
 
 program.name('bpcreate')
     .usage('[dir] [options]')
@@ -20,15 +18,17 @@ program.name('bpcreate')
 
 const projectName = program.args.shift();
 
-Object.values(pkgs).forEach(pkg => {
-    pkg.licence = program.licence;
-    pkg.name = projectName;
-});
-
 function main() {
     filehandler.mkdir(projectName, '.');
     filehandler.copyTemplateMulti(program.template, `${projectName}`, ['package.json',]);
-    filehandler.write(`${projectName}/package.json`, `${JSON.stringify(pkgs[program.template], null, 2)}\n`);
+    jsonfile.readFile(path.join(TEMPLATE_DIR, program.template, 'package.json'), (err, pkg) => {
+        if (err) {
+            throw err;
+        }
+        pkg.licence = program.licence;
+        pkg.name = projectName;
+        filehandler.write(`${projectName}/package.json`, `${JSON.stringify(pkg, null, 2)}\n`);
+    });
 }
 
 main();

@@ -22,5 +22,6 @@ export default [{
         'commander',
         'mkdirp',
         'chalk',
+        'jsonfile',
     ],
 },];
