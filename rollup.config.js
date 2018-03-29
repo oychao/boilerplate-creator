@@ -22,6 +22,6 @@ export default [{
         'commander',
         'mkdirp',
         'chalk',
-        'jsonfile',
+        'promise-jsonfile',
     ],
 },];

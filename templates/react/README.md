@@ -1,3 +1,3 @@
 # boilerplate-creator
 
-react demo
+react boilerplate

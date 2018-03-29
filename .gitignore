@@ -1,6 +1,4 @@
-node_modules
-yarn.lock
-yarn-error.log
-package-lock.json
-test
 bin
+node_modules
+package-lock.json
+yarn*

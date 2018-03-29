@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import program from 'commander';
-import jsonfile from 'jsonfile';
+import jsonfile from 'promise-jsonfile';
 
 import filehandler from './src/filehandler';
 import { version as VERSION, } from './package.json';
@@ -21,13 +21,12 @@ const projectName = program.args.shift();
 function main() {
     filehandler.mkdir(projectName, '.');
     filehandler.copyTemplateMulti(program.template, `${projectName}`, ['package.json',]);
-    jsonfile.readFile(path.join(TEMPLATE_DIR, program.template, 'package.json'), (err, pkg) => {
-        if (err) {
-            throw err;
-        }
+    jsonfile.read(path.join(TEMPLATE_DIR, program.template, 'package.json')).then(pkg => {
         pkg.licence = program.licence;
         pkg.name = projectName;
         filehandler.write(`${projectName}/package.json`, `${JSON.stringify(pkg, null, 2)}\n`);
+    }).catch(err => {
+        throw err;
     });
 }
 

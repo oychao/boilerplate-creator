@@ -6,33 +6,43 @@
   "license": "WTFPL",
   "repository": "oychao/boilerplate-generator",
   "description": "a cli tool",
+  "keywords": [
+    "boilerplate-generator",
+    "boilerplate",
+    "cli",
+    "react"
+  ],
   "scripts": {
-    "build": "rollup -c && npm link",
+    "build": "rollup -c",
     "lint": "eslint .",
-    "fix": "eslint . --fix --ext .js,.jsx"
+    "fix": "eslint . --fix --ext .js,.jsx",
+    "test": "mocha --require intelli-espower-loader 'test/**/*.test.js'",
+    "prepare": "npm run build"
   },
   "preferGlobal": true,
   "bin": {
     "bpg": "./bin/bundle.js"
   },
   "files": [
-    "LICENSE.d",
-    "bin/",
-    "templates/"
+    "LICENSE.md",
+    "README.md",
+    "bin/"
   ],
   "devDependencies": {
     "babel-eslint": "^8.2.2",
-    "chalk": "^2.3.2",
     "eslint": "^4.19.1",
     "eslint-plugin-react": "^7.7.0",
-    "jsonfile": "^4.0.0",
+    "intelli-espower-loader": "^1.0.1",
+    "mocha": "^5.0.5",
+    "power-assert": "^1.4.4",
     "rollup": "^0.57.1",
     "rollup-plugin-json": "^2.3.0",
     "rollup-plugin-shebang": "^0.1.4"
   },
   "dependencies": {
+    "chalk": "^2.3.2",
     "commander": "^2.15.1",
     "mkdirp": "^0.5.1",
-    "ncp": "^2.0.0"
+    "promise-jsonfile": "^1.0.1"
   }
 }
