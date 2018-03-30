@@ -12,14 +12,21 @@ const write = (file, str, mode) => {
     console.log(`${chalk.cyanBright('   create: ')}${file}`);
 };
 
-const mkdir = (base, dir) => {
+const mkdir = (base, dir = '.') => {
     const loc = path.join(base, dir);
-    console.log(`${chalk.cyanBright('   create: ')}${loc}${path.sep}`);
     mkdirp.sync(loc, MODE_0755);
+    console.log(`${chalk.cyanBright('   create: ')}${loc}${path.sep}`);
 };
 
 const copyTemplate = (from, to) => {
-    write(to, fs.readFileSync(path.join(TEMPLATE_DIR, from), 'utf-8'));
+    if (fs.lstatSync(path.join(TEMPLATE_DIR, from)).isDirectory()) {
+        if (!fs.existsSync(to)) {
+            mkdir(to);
+        }
+        copyTemplateMulti(from, to);
+    } else {
+        write(to, fs.readFileSync(path.join(TEMPLATE_DIR, from), 'utf-8'));
+    }
 };
 
 const copyTemplateMulti = (fromDir, toDir, excludes) => {
