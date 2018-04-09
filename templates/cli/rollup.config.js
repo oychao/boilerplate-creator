@@ -22,5 +22,8 @@ export default [{
         'commander',
         'mkdirp',
         'chalk',
+        'ora',
+        'promise-jsonfile',
+        'shelljs',
     ],
 },];

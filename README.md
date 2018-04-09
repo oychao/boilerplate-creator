@@ -8,6 +8,7 @@ generate common boilerplates
 
 - [ ] user document
 - [x] integrate with travis-ci
+- [x] prettify the process
 
 ### cli
 - [x] basic cli boilerplate

@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import mkdirp from 'mkdirp';
 import chalk from 'chalk';
+import shell from 'shelljs';
 
 const MODE_0666 = parseInt('0666', 8);
 const MODE_0755 = parseInt('0755', 8);
@@ -9,13 +10,13 @@ const TEMPLATE_DIR = path.join(__dirname, '..', 'templates');
 
 const write = (file, str, mode) => {
     fs.writeFileSync(file, str, { mode: mode || MODE_0666, });
-    console.log(`${chalk.cyanBright('   create: ')}${file}`);
+    shell.echo(`${chalk.cyanBright('   create: ')}${file}`);
 };
 
 const mkdir = (base, dir = '.') => {
     const loc = path.join(base, dir);
     mkdirp.sync(loc, MODE_0755);
-    console.log(`${chalk.cyanBright('   create: ')}${loc}${path.sep}`);
+    shell.echo(`${chalk.cyanBright('   create: ')}${loc}${path.sep}`);
 };
 
 const copyTemplate = (from, to) => {
