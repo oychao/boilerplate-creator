@@ -7,7 +7,7 @@ generate common boilerplates
 ### about project
 
 - [ ] user document
-- [ ] integrate with travis-ci
+- [x] integrate with travis-ci
 
 ### cli
 - [x] basic cli boilerplate
