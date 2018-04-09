@@ -11,12 +11,6 @@ module.exports = {
         path: path.resolve('dist'),
         filename: 'bundle.js',
     },
-    externals: {
-        'react': 'React',
-        'react-dom': 'ReactDOM',
-        'redux': 'Redux',
-        'react-redux': 'ReactRedux',
-    },
     resolve: {
         modules: [
             path.resolve('./src'),
@@ -44,6 +38,12 @@ module.exports = {
         hot: true,
         open: true,
         // progress: true
+    },
+    externals: {
+        'react': 'React',
+        'react-dom': 'ReactDOM',
+        'redux': 'Redux',
+        'react-redux': 'ReactRedux',
     },
     plugins: [
         new CleanWebpackPlugin(['dist',]),

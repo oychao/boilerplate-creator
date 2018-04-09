@@ -2,7 +2,11 @@
     "name": "cli-demo",
     "version": "1.0.0",
     "main": "index.js",
+    "author": "Your name <your@email.address>",
     "license": "WTFPL",
+    "repository": "your/github/repository",
+    "keywords": [],
+    "description": "react",
     "scripts": {
         "build": "webpack",
         "start": "webpack-dev-server",

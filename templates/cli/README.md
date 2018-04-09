@@ -1,3 +1,0 @@
-# boilerplate-creator
-
-cli demo

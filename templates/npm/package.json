@@ -1,21 +1,12 @@
 {
-  "name": "my-cli",
+  "name": "npm-package",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "./dist/bundle.js",
   "author": "Your name <your@email.address>",
-  "license": "WTFPL",
+  "license": "MIT",
   "repository": "your/github/repository",
   "keywords": [],
-  "description": "a cli tool",
-  "preferGlobal": true,
-  "bin": {
-    "bpg": "./bin/bundle.js"
-  },
-  "files": [
-    "LICENSE.md",
-    "README.md",
-    "bin/"
-  ],
+  "description": "react",
   "scripts": {
     "build": "rollup -c",
     "lint": "eslint .",
@@ -30,14 +21,6 @@
     "intelli-espower-loader": "^1.0.1",
     "mocha": "^5.0.5",
     "power-assert": "^1.4.4",
-    "rollup": "^0.57.1",
-    "rollup-plugin-json": "^2.3.0",
-    "rollup-plugin-shebang": "^0.1.4"
-  },
-  "dependencies": {
-    "chalk": "^2.3.2",
-    "commander": "^2.15.1",
-    "mkdirp": "^0.5.1",
-    "promise-jsonfile": "^1.0.1"
+    "rollup": "^0.57.1"
   }
 }

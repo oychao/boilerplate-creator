@@ -1,3 +1,0 @@
-# boilerplate-creator
-
-react demo
