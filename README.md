@@ -2,6 +2,8 @@
 
 generate common boilerplates
 
+[![Build Status](https://travis-ci.org/oychao/boilerplate-generator.svg?branch=master)](https://travis-ci.org/oychao/boilerplate-generator)
+
 ## Todos
 
 ### about project
@@ -15,9 +17,7 @@ generate common boilerplates
 
 ### react
 - [x] basic react boilerplate
-- [x] boilerplate in es6, with redux and other relative libraries
-- [ ] support custom asynchronous redux action managing libraries (e.g. redux-thunk, redux-saga, redux-promise, etc.)
-- [ ] boilerplate with third party ui libraries
+- [x] boilerplate in ecmascript, with redux and other relative libraries
 - [ ] boilerplate in typescript
 
 ### express
