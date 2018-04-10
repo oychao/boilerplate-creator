@@ -1,13 +1,13 @@
 {
-  "name": "boilerplate-generator",
+  "name": "boilerplate-creator",
   "version": "1.0.0",
   "main": "index.js",
   "author": "Ouyang Chao <chao@ouyang.io>",
   "license": "WTFPL",
-  "repository": "oychao/boilerplate-generator",
+  "repository": "oychao/boilerplate-creator",
   "description": "a cli tool",
   "keywords": [
-    "boilerplate-generator",
+    "boilerplate-creator",
     "boilerplate",
     "cli",
     "react"
@@ -21,7 +21,7 @@
   },
   "preferGlobal": true,
   "bin": {
-    "bpg": "./bin/bundle.js"
+    "bpc": "./bin/bundle.js"
   },
   "files": [
     "LICENSE.md",
@@ -43,6 +43,9 @@
     "chalk": "^2.3.2",
     "commander": "^2.15.1",
     "mkdirp": "^0.5.1",
-    "promise-jsonfile": "^1.0.1"
+    "ora": "^2.0.0",
+    "promise-jsonfile": "^1.0.1",
+    "readline-sync": "^1.4.9",
+    "shelljs": "^0.8.1"
   }
 }

@@ -19,9 +19,12 @@ export default [{
     external: [
         'fs',
         'path',
+        'chalk',
         'commander',
         'mkdirp',
-        'chalk',
+        'ora',
         'promise-jsonfile',
+        'readline-sync',
+        'shelljs',
     ],
 },];

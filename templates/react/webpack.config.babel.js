@@ -4,7 +4,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ScriptExtHtmlWebpackPlugin from 'script-ext-html-webpack-plugin';
 import CleanWebpackPlugin from 'clean-webpack-plugin';
 
-module.exports = {
+export default {
     entry: ['@babel/polyfill', 'react-hot-loader/patch', './index.jsx',],
     output: {
         publicPath: '/',
@@ -20,8 +20,8 @@ module.exports = {
     },
     module: {
         rules: [{
-            test: /\.css$/,
-            use: ['style-loader', 'css-loader',],
+            test: /\.(css|less)$/,
+            use: ['style-loader', 'css-loader', 'less-loader',],
         }, {
             test: /\.(js|jsx)$/,
             exclude: /node_modules/,
