@@ -1,13 +1,13 @@
 {
-  "name": "boilerplate-generator",
+  "name": "boilerplate-creator",
   "version": "1.0.0",
   "main": "index.js",
   "author": "Ouyang Chao <chao@ouyang.io>",
   "license": "WTFPL",
-  "repository": "oychao/boilerplate-generator",
+  "repository": "oychao/boilerplate-creator",
   "description": "a cli tool",
   "keywords": [
-    "boilerplate-generator",
+    "boilerplate-creator",
     "boilerplate",
     "cli",
     "react"

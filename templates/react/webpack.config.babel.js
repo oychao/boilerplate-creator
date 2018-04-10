@@ -4,7 +4,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ScriptExtHtmlWebpackPlugin from 'script-ext-html-webpack-plugin';
 import CleanWebpackPlugin from 'clean-webpack-plugin';
 
-module.exports = {
+export default {
     entry: ['@babel/polyfill', 'react-hot-loader/patch', './index.jsx',],
     output: {
         publicPath: '/',
