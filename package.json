@@ -21,7 +21,7 @@
   },
   "preferGlobal": true,
   "bin": {
-    "bpg": "./bin/bundle.js"
+    "bpc": "./bin/bundle.js"
   },
   "files": [
     "LICENSE.md",
@@ -45,6 +45,7 @@
     "mkdirp": "^0.5.1",
     "ora": "^2.0.0",
     "promise-jsonfile": "^1.0.1",
+    "readline-sync": "^1.4.9",
     "shelljs": "^0.8.1"
   }
 }
