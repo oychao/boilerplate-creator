@@ -1,11 +1,15 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-// import { Provider } from 'react-redux';
-import 'index.less';
+import { Provider } from 'react-redux';
+
+import store from './src/store';
+import App from './src/components/App';
+
+import './style';
 
 ReactDOM.render(
-    // <Provider store={store}>
-    <h1>Hello Typescript</h1>
-    // </Provider>
-    , document.querySelector('#app')
+    <Provider store={store}>
+        <App.view />
+    </Provider>,
+    document.querySelector('#app')
 );
