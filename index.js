@@ -78,8 +78,14 @@ jsonfile.read(path.join(TEMPLATE_DIR, program.template, 'package.json')).then(pk
         if(isApp) {
             spinnerEcho(chalk.magentaBright('Get started with following commands: '), 'info');
             shell.echo();
-            shell.echo(`   ${chalk.yellow('$')} ${chalk.blueBright(`cd ${projectName}`)}`);            
-            shell.echo(`   ${chalk.yellow('$')} ${chalk.blueBright('npm start')}`);            
+            shell.echo(`   ${chalk.yellow('$')} ${chalk.blueBright(`cd ${projectName}`)}`);
+            shell.echo(`   ${chalk.yellow('$')} ${chalk.blueBright('npm start')}`);
+        } else {
+            spinnerEcho(chalk.magentaBright('Edit your code and build the project: '), 'info');
+            shell.echo();
+            shell.echo(`   ${chalk.yellow('$')} ${chalk.blueBright(`cd ${projectName}`)}`);
+            shell.echo(`   ${chalk.yellow('$')} # do something`);
+            shell.echo(`   ${chalk.yellow('$')} ${chalk.blueBright('npm build')}`);
         }
         spinnerEcho(chalk.magentaBright(`done in ${((new Date().getTime() - start) / 1e3).toFixed(2)}s, enjoy it!`), 'succeed');
     });
