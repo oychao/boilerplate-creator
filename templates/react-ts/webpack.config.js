@@ -30,6 +30,9 @@ module.exports = {
         }, {
             test: /\.(css|less)$/,
             use: ['style-loader', 'css-loader', 'less-loader']
+        }, {
+            test: /\.svg$/,
+            use: ['svg-inline-loader']
         }]
     },
     devtool: 'source-map',

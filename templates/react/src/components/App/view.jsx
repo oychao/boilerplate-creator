@@ -4,6 +4,7 @@ import { hot, } from 'react-hot-loader';
 
 import * as actions from './actions';
 
+import logo from './logo.svg';
 import './style.less';
 
 class App extends React.Component {
@@ -19,10 +20,22 @@ class App extends React.Component {
     render() {
         const { count, } = this.props;
         return (
-            <div>
-                <h1>Hello World</h1>
-                <h2>{count}</h2>
-                <button onClick={this.handleCount}>Click me!</button>
+            <div className="App">
+                <header className="App-header">
+                    <div
+                        dangerouslySetInnerHTML={{ __html: logo, }}
+                        className="App-logo"
+                    />
+                    <h1 className="App-title">Welcome to React</h1>
+                </header>
+                <p className="App-intro">
+                    To get started, edit{' '}
+                    <code>src/components/App/view.jsx</code> and save to reload.
+                </p>
+                <div>
+                    <h2>{count}</h2>
+                    <button onClick={this.handleCount}>Click me!</button>
+                </div>
             </div>
         );
     }

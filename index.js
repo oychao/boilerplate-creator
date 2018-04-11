@@ -85,7 +85,7 @@ jsonfile.read(path.join(TEMPLATE_DIR, program.template, 'package.json')).then(pk
             shell.echo();
             shell.echo(`   ${chalk.yellow('$')} ${chalk.blueBright(`cd ${projectName}`)}`);
             shell.echo(`   ${chalk.yellow('$')} # do something`);
-            shell.echo(`   ${chalk.yellow('$')} ${chalk.blueBright('npm build')}`);
+            shell.echo(`   ${chalk.yellow('$')} ${chalk.blueBright('npm run build')}`);
         }
         spinnerEcho(chalk.magentaBright(`done in ${((new Date().getTime() - start) / 1e3).toFixed(2)}s, enjoy it!`), 'succeed');
     });

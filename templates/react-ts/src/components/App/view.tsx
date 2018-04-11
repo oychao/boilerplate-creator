@@ -3,6 +3,9 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import * as actions from './actions';
+
+// use webpack module when load assets like .svg
+const logo = require('./logo.svg') as string;
 import './style';
 
 class App extends React.Component<any, any> {
@@ -22,10 +25,23 @@ class App extends React.Component<any, any> {
     render(): JSX.Element {
         const { count } = this.props;
         return (
-            <div>
-                <h1>Hello World</h1>
-                <h2>{count}</h2>
-                <button onClick={this.handleCount}>Click me!</button>
+            <div className="App">
+                <header className="App-header">
+                    <div
+                        dangerouslySetInnerHTML={{ __html: logo }}
+                        className="App-logo"
+                    />
+                    <h1 className="App-title">Welcome to React</h1>
+                </header>
+                <p className="App-intro">
+                    To get started, edit{' '}
+                    <code>src/components/App/view.tsx</code> and save to reload.
+                </p>
+
+                <div>
+                    <h2>{count}</h2>
+                    <button onClick={this.handleCount}>Click me!</button>
+                </div>
             </div>
         );
     }

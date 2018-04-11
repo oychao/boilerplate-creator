@@ -31,6 +31,12 @@ $ bpc helloreact
 $ # or bpc helloreact -t react
 ```
 
+Create a React boilerplate in TypeScript
+
+```bash
+$ bpc helloreactts -t react-ts
+```
+
 Create a normal NPM boilerplate or a CLI tool
 
 ```bash
@@ -48,7 +54,7 @@ $ bpc --help
 
 ### about project
 
-- [ ] user document
+- [x] user document
 - [x] integrate with travis-ci
 - [x] prettify the process
 
@@ -59,7 +65,7 @@ $ bpc --help
 ### react
 - [x] basic react boilerplate
 - [x] boilerplate in ecmascript, with redux and other relative libraries
-- [ ] boilerplate in typescript
+- [x] boilerplate in typescript
 - [ ] [**investigating**]server-sider rendering boilerplate
 
 ## Licence
