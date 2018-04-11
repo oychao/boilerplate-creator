@@ -23,13 +23,12 @@ export default {
             test: /\.(css|less)$/,
             use: ['style-loader', 'css-loader', 'less-loader',],
         }, {
-            test: /\.(js|jsx)$/,
+            test: /\.jsx?$/,
             exclude: /node_modules/,
             use: ['babel-loader',],
         }, {
-            test: /\.(worker\.js)$/,
-            exclude: /node_modules/,
-            use: ['worker-loader',],
+            test: /\.svg$/,
+            use: ['svg-inline-loader',],
         },],
     },
     devtool: 'eval-source-map',
