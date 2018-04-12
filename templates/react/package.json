@@ -1,0 +1,53 @@
+{
+    "name": "react-demo",
+    "version": "1.0.0",
+    "main": "index.js",
+    "author": "Your name <your@email.address>",
+    "license": "WTFPL",
+    "repository": "your/github/repository",
+    "keywords": [],
+    "description": "react",
+    "scripts": {
+        "build": "webpack",
+        "start": "webpack-dev-server",
+        "lint": "eslint .",
+        "fix": "eslint . --fix --ext .js,.jsx"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.0.0-beta.44",
+        "@babel/plugin-transform-react-jsx": "^7.0.0-beta.44",
+        "@babel/polyfill": "^7.0.0-beta.44",
+        "@babel/preset-env": "^7.0.0-beta.44",
+        "@babel/preset-stage-0": "^7.0.0-beta.44",
+        "@babel/register": "^7.0.0-beta.44",
+        "babel-eslint": "^8.2.2",
+        "babel-loader": "8.0.0-beta.2",
+        "babel-plugin-react": "^1.0.0",
+        "clean-webpack-plugin": "^0.1.19",
+        "css-loader": "^0.28.11",
+        "eslint": "^4.19.1",
+        "eslint-plugin-react": "^7.7.0",
+        "file-loader": "^1.1.11",
+        "html-webpack-plugin": "^3.2.0",
+        "less": "^3.0.1",
+        "less-loader": "^4.1.0",
+        "react-hot-loader": "^4.0.1",
+        "script-ext-html-webpack-plugin": "^2.0.1",
+        "style-loader": "^0.20.3",
+        "svg-inline-loader": "^0.8.0",
+        "url-loader": "^1.0.1",
+        "webpack": "^3.11.0",
+        "webpack-dev-server": "^2.11.2"
+    },
+    "dependencies": {
+        "immer": "^1.2.1",
+        "react": "^16.3.1",
+        "react-dom": "^16.3.1",
+        "react-redux": "^5.0.7",
+        "react-router": "^4.2.0",
+        "react-router-redux": "^4.0.8",
+        "redux": "^3.7.2",
+        "redux-actions": "^2.3.0",
+        "redux-thunk": "^2.2.0"
+    }
+}

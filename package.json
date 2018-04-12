@@ -1,0 +1,51 @@
+{
+  "name": "boilerplate-creator",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Ouyang Chao <chao@ouyang.io>",
+  "license": "WTFPL",
+  "repository": "oychao/boilerplate-creator",
+  "description": "a cli tool",
+  "keywords": [
+    "boilerplate-creator",
+    "boilerplate",
+    "cli",
+    "react"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "lint": "eslint .",
+    "fix": "eslint . --fix --ext .js,.jsx",
+    "test": "mocha --require intelli-espower-loader 'test/**/*.test.js'",
+    "prepare": "npm run build"
+  },
+  "preferGlobal": true,
+  "bin": {
+    "bpc": "./bin/bundle.js"
+  },
+  "files": [
+    "LICENSE.md",
+    "README.md",
+    "bin/"
+  ],
+  "devDependencies": {
+    "babel-eslint": "^8.2.2",
+    "eslint": "^4.19.1",
+    "eslint-plugin-react": "^7.7.0",
+    "intelli-espower-loader": "^1.0.1",
+    "mocha": "^5.0.5",
+    "power-assert": "^1.4.4",
+    "rollup": "^0.57.1",
+    "rollup-plugin-json": "^2.3.0",
+    "rollup-plugin-shebang": "^0.1.4"
+  },
+  "dependencies": {
+    "chalk": "^2.3.2",
+    "commander": "^2.15.1",
+    "mkdirp": "^0.5.1",
+    "ora": "^2.0.0",
+    "promise-jsonfile": "^1.0.1",
+    "readline-sync": "^1.4.9",
+    "shelljs": "^0.8.1"
+  }
+}
