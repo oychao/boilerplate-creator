@@ -10,63 +10,49 @@ generate common boilerplates
 
 ## How to use
 
-[**NOTE**] This project is published for now, clone it down if you want to have a try.
+### Installation
 
 ```bash
-$ git clone git@github.com:oychao/boilerplate-creator.git
-$ cd boilerplate-creator
-$ npm install && npm link
+$ npm i -g boilerplate-creator
 ```
 
-Basic usage
+### Demo
+
+<p align="center">
+    <img src="https://i.giphy.com/media/pcJnyMqp6HdJLSFGwx/giphy.webp" width=600 alt="demo">
+</p>
+
+### Basic usage
 
 ```bash
 $ bpc [project name] [options]
 ```
 
-Create a React boilerplate
+### Create a React boilerplate
 
 ```bash
 $ bpc helloreact
 $ # or bpc helloreact -t react
 ```
 
-Create a React boilerplate in TypeScript
+### Create a React boilerplate in TypeScript
 
 ```bash
 $ bpc helloreactts -t react-ts
 ```
 
-Create a normal NPM boilerplate or a CLI tool
+### Create a normal NPM boilerplate or a CLI tool
 
 ```bash
 $ bpc hellonpm -t npm
 $ bpc hellocli -t cli
 ```
 
-Get Help document
+### Get Help document
 
 ```bash
 $ bpc --help
 ```
-
-## Todos
-
-### about project
-
-- [x] user document
-- [x] integrate with travis-ci
-- [x] prettify the process
-
-### cli
-- [x] npm boilerplate
-- [x] cli boilerplate
-
-### react
-- [x] basic react boilerplate
-- [x] boilerplate in ecmascript, with redux and other relative libraries
-- [x] boilerplate in typescript
-- [ ] [**investigating**]server-sider rendering boilerplate
 
 ## Licence
 
