@@ -51,7 +51,9 @@ const copyTemplate = (from, to) => {
 const copyTemplateMulti = (fromDir, toDir, excludes) => {
     fs.readdirSync(path.join(TEMPLATE_DIR, fromDir))
         .filter(!!excludes ? file => excludes.indexOf(file) === -1 : () => true)
-        .forEach(name => void (copyTemplate(path.join(fromDir, name), path.join(toDir, name))));
+        .forEach(name => {
+            copyTemplate(path.join(fromDir, name), path.join(toDir, name === 'npmignore' ? `.${name}` : name));
+        });
 };
 
 const fExists = target => {
