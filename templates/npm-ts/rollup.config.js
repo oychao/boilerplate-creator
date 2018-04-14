@@ -1,13 +1,15 @@
+import typescript from 'rollup-plugin-typescript';
+
 export default [
     {
-        input: './index.js',
+        input: './index.ts',
         output: [
             {
                 file: 'dist/bundle.js',
                 format: 'cjs',
             },
         ],
-        plugins: [],
+        plugins: [typescript(),],
         external: ['fs', 'path', 'jsonfile',],
     },
 ];

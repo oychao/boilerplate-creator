@@ -1,9 +1,10 @@
+import typescript from 'rollup-plugin-typescript';
 import shebang from 'rollup-plugin-shebang';
 import json from 'rollup-plugin-json';
 
 export default [
     {
-        input: './index.js',
+        input: './index.ts',
         output: [
             {
                 file: 'bin/bundle.js',
@@ -11,6 +12,7 @@ export default [
             },
         ],
         plugins: [
+            typescript(),
             shebang({
                 shebang: '#!/usr/bin/env node',
             }),

@@ -33,22 +33,22 @@ $ bpc [project name] [options]
 ```bash
 $ bpc helloreact
 $ # or bpc helloreact -t react
-```
-
-### Create a React boilerplate in TypeScript
-
-```bash
-$ bpc helloreactts -t react-ts
+$ # react in typescript
+$ bpc helloreactts -t react --ts
 ```
 
 ### Create a normal NPM boilerplate or a CLI tool
 
 ```bash
 $ bpc hellonpm -t npm
+$ bpc hellonpm -t npm --ts
 $ bpc hellocli -t cli
+$ bpc hellocli -t cli --ts
 ```
 
 ### Get Help document
+
+There are 6 templates(npm|npm-ts|cli|cli-ts|react|react-ts) are supported for now, please check the help document for more information.
 
 ```bash
 $ bpc --help
