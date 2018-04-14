@@ -8,15 +8,9 @@
         "jsx": "react",
         "baseUrl": ".",
         "paths": {
-            "comps/*": [
-                "src/components/*"
-            ],
-            "store/*": [
-                "src/store/*"
-            ]
+            "comps/*": ["src/components/*"],
+            "store/*": ["src/store/*"]
         }
     },
-    "include": [
-        "./src/**/*"
-    ]
+    "include": ["./src/**/*"]
 }

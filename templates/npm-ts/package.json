@@ -1,5 +1,5 @@
 {
-  "name": "npm-package",
+  "name": "helloworld",
   "version": "1.0.0",
   "main": "./dist/bundle.js",
   "author": "Your name <your@email.address>",
@@ -15,12 +15,12 @@
     "prepare": "npm run build"
   },
   "devDependencies": {
-    "babel-eslint": "^8.2.2",
-    "eslint": "^4.19.1",
-    "eslint-plugin-react": "^7.7.0",
     "intelli-espower-loader": "^1.0.1",
     "mocha": "^5.1.0",
     "power-assert": "^1.5.0",
-    "rollup": "^0.57.1"
-  }
+    "rollup": "^0.57.1",
+    "rollup-plugin-typescript2": "^0.12.0"
+  },
+  "licence": "MIT",
+  "dependencies": {}
 }
