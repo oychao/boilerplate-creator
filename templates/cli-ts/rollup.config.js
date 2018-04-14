@@ -1,10 +1,10 @@
-import typescript from 'rollup-plugin-typescript';
+import typescript from 'rollup-plugin-typescript2';
 import shebang from 'rollup-plugin-shebang';
 import json from 'rollup-plugin-json';
 
 export default [
     {
-        input: './index.ts',
+        input: './src/index.ts',
         output: [
             {
                 file: 'bin/bundle.js',

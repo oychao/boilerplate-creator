@@ -19,7 +19,8 @@
     "mocha": "^5.1.0",
     "power-assert": "^1.5.0",
     "rollup": "^0.57.1",
-    "rollup-plugin-typescript2": "^0.12.0"
+    "rollup-plugin-typescript2": "^0.12.0",
+    "typescript": "^2.8.1"
   },
   "licence": "MIT",
   "dependencies": {}
