@@ -1,3 +1,3 @@
 import sayHello from './src/main';
 
-sayHello();
+sayHello('world');

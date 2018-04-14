@@ -1,7 +1,7 @@
 import chalk from 'chalk';
 
 function main() {
-    console.log(chalk.bgYellow('hello cli'));
+    console.log(chalk.yellow('hello cli'));
 }
 
 main();

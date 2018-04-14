@@ -11,7 +11,8 @@
         "build": "webpack",
         "start": "webpack-dev-server",
         "lint": "eslint .",
-        "fix": "eslint . --fix --ext .js,.jsx"
+        "fix": "eslint . --fix --ext .js,.jsx",
+        "test": "mocha --require intelli-espower-loader 'test/**/*.test.js'"
     },
     "devDependencies": {
         "@babel/core": "^7.0.0-beta.44",
@@ -29,8 +30,11 @@
         "eslint-plugin-react": "^7.7.0",
         "file-loader": "^1.1.11",
         "html-webpack-plugin": "^3.2.0",
+        "intelli-espower-loader": "^1.0.1",
         "less": "^3.0.1",
         "less-loader": "^4.1.0",
+        "mocha": "^5.1.0",
+        "power-assert": "^1.5.0",
         "react-hot-loader": "^4.0.1",
         "script-ext-html-webpack-plugin": "^2.0.1",
         "style-loader": "^0.20.3",
