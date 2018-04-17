@@ -28,7 +28,7 @@ program.name(chalk.green('bpc'))
     .usage(chalk.green('[project name] [options]'))
     .description(`${BPC_NAME}: create a boilerplate quickly`)
     .option('-t, --template [temp]', `which template to use [temp] support(${legalTempsHintStr})`, 'react')
-    .option('-l, --licence [lic]', `generate licence file [lic] e.g.(${legalLics.join('|')})`, 'MIT')
+    .option('-l, --license [lic]', `generate license file [lic] e.g.(${legalLics.join('|')})`, 'MIT')
     .option('-f, --force', 'force on non-empty directory')
     .option('    --ts', 'use typescript, \'bpc demo -t react-ts\' is equivalent to \'bpc demo -t react --ts\'')
     .version(VERSION, '-v, --version')
@@ -84,7 +84,7 @@ jsonfile.read(path.join(TEMPLATE_DIR, program.template, 'pkg.json')).then(pkg =>
     utils.mkdir(projectName);
     utils.copyTemplateMulti('_common', `${projectName}`, ['package.json',]);
     utils.copyTemplateMulti(program.template, `${projectName}`, ['package.json',]);
-    pkg.licence = program.licence;
+    pkg.license = program.license;
     pkg.name = projectName;
     utils.write(`${projectName}/package.json`, `${JSON.stringify(pkg, null, 2)}\n`);
     // cd into target folder
