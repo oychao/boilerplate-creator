@@ -10,6 +10,11 @@ const MODE_0666 = parseInt('0666', 8);
 const MODE_0755 = parseInt('0755', 8);
 const TEMPLATE_DIR = path.join(__dirname, '..', 'templates');
 
+const filenameMap = {
+    'npmignore': '.npmignore',
+};
+const __getRealname = key => filenameMap[key] || key;
+
 const spinnerEcho = (info, done) => {
     shell.echo();
     const spinner = new ora({
@@ -52,7 +57,7 @@ const copyTemplateMulti = (fromDir, toDir, excludes) => {
     fs.readdirSync(path.join(TEMPLATE_DIR, fromDir))
         .filter(!!excludes ? file => excludes.indexOf(file) === -1 : () => true)
         .forEach(name => {
-            copyTemplate(path.join(fromDir, name), path.join(toDir, name === 'npmignore' ? `.${name}` : name));
+            copyTemplate(path.join(fromDir, name), path.join(toDir, __getRealname(name)));
         });
 };
 
@@ -60,7 +65,7 @@ const fExists = target => {
     try {
         fs.accessSync(target);
         return true;
-    } catch(e) {
+    } catch (e) {
         return false;
     }
 };

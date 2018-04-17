@@ -30,7 +30,7 @@
     "rollup": "^0.57.1",
     "rollup-plugin-json": "^2.3.0",
     "rollup-plugin-shebang": "^0.1.4",
-    "rollup-plugin-typescript2": "^0.12.0",
+    "rollup-plugin-typescript2": "^0.13.0",
     "typescript": "^2.8.1"
   },
   "dependencies": {
@@ -41,6 +41,5 @@
     "promise-jsonfile": "^1.0.1",
     "readline-sync": "^1.4.9",
     "shelljs": "^0.8.1"
-  },
-  "licence": "MIT"
+  }
 }

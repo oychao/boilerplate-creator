@@ -76,7 +76,7 @@ if(!program.force && utils.fExists(projectName)) {
 
 // read package.json
 spinner = spinnerEcho(chalk.magentaBright('initializing configuration file', 'succeed'));
-jsonfile.read(path.join(TEMPLATE_DIR, program.template, 'package.json')).then(pkg => {
+jsonfile.read(path.join(TEMPLATE_DIR, program.template, 'pkg.json')).then(pkg => {
     spinner.succeed();
     // remove target folder if exists
     shell.rm('-rf', projectName);
