@@ -12,7 +12,7 @@
         "start": "webpack-dev-server",
         "lint": "eslint .",
         "fix": "eslint . --fix --ext .js,.jsx",
-        "test": "mocha --require intelli-espower-loader test/**/*.test.js"
+        "test": "mocha --require intelli-espower-loader test/**/*.spec.js"
     },
     "devDependencies": {
         "@babel/core": "^7.0.0-beta.44",
