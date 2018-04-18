@@ -20,17 +20,22 @@
     "build": "rollup -c",
     "lint": "eslint .",
     "fix": "eslint . --fix --ext .js,.jsx",
-    "test": "mocha --require intelli-espower-loader 'test/**/*.test.js'",
+    "test": "mocha --require babel-register test/**/*.spec.js",
     "prepare": "npm run build"
   },
   "devDependencies": {
-    "intelli-espower-loader": "^1.0.1",
+    "babel-core": "^6.26.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-register": "^6.26.0",
+    "chai": "^4.1.2",
     "mocha": "^5.1.0",
-    "power-assert": "^1.5.0",
+    "mocha-sinon": "^2.0.0",
     "rollup": "^0.57.1",
     "rollup-plugin-json": "^2.3.0",
     "rollup-plugin-shebang": "^0.1.4",
     "rollup-plugin-typescript2": "^0.13.0",
+    "sinon": "^4.5.0",
     "typescript": "^2.8.1"
   },
   "dependencies": {

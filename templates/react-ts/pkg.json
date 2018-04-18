@@ -10,7 +10,7 @@
     "scripts": {
         "build": "webpack",
         "start": "webpack-dev-server",
-        "test": "mocha --require intelli-espower-loader test/**/*.test.js"
+        "test": "mocha --require intelli-espower-loader test/**/*.spec.js"
     },
     "devDependencies": {
         "@types/react": "^16.3.10",
