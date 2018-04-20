@@ -82,8 +82,8 @@ jsonfile.read(path.join(TEMPLATE_DIR, program.template, 'pkg.json')).then(pkg =>
     shell.rm('-rf', projectName);
     // create target folder and copy configuration files into it
     utils.mkdir(projectName);
-    utils.copyTemplateMulti('_common', `${projectName}`, ['package.json',]);
-    utils.copyTemplateMulti(program.template, `${projectName}`, ['package.json',]);
+    utils.copyTemplateMulti('_common', `${projectName}`, ['pkg.json',]);
+    utils.copyTemplateMulti(program.template, `${projectName}`, ['pkg.json',]);
     pkg.license = program.license;
     pkg.name = projectName;
     utils.write(`${projectName}/package.json`, `${JSON.stringify(pkg, null, 2)}\n`);
