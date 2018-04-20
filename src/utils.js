@@ -53,9 +53,9 @@ const copyTemplate = (from, to) => {
     }
 };
 
-const copyTemplateMulti = (fromDir, toDir, excludes) => {
+const copyTemplateMulti = (fromDir, toDir, excludes = []) => {
     fs.readdirSync(path.join(TEMPLATE_DIR, fromDir))
-        .filter(!!excludes ? file => excludes.indexOf(file) === -1 : () => true)
+        .filter(file => excludes.indexOf(file) === -1)
         .forEach(name => {
             copyTemplate(path.join(fromDir, name), path.join(toDir, __getRealname(name)));
         });
