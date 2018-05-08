@@ -1,6 +1,6 @@
 {
   "name": "boilerplate-creator",
-  "version": "1.2.8",
+  "version": "1.2.9",
   "main": "index.js",
   "author": "Ouyang Chao <chao@ouyang.io>",
   "license": "WTFPL",
@@ -17,7 +17,7 @@
     "build": "rollup -c",
     "lint": "eslint .",
     "fix": "eslint . --fix --ext .js,.jsx",
-    "test": "mocha --require intelli-espower-loader test/**/*.test.js",
+    "test": "mocha --require intelli-espower-loader test/**/*.spec.js",
     "prepare": "npm run build"
   },
   "preferGlobal": true,
