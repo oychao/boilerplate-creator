@@ -5,8 +5,8 @@ export default [
         input: './src/index.ts',
         output: [
             {
-                file: 'dist/bundle.js',
-                format: 'cjs',
+                file: 'bin/bundle.js',
+                format: 'umd',
             },
         ],
         plugins: [typescript(),],

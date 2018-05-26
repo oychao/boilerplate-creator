@@ -7,10 +7,9 @@
   "repository": "your/github/repository",
   "keywords": [],
   "description": "npm",
+  "files": ["LICENSE.md", "README.md", "bin/"],
   "scripts": {
     "build": "rollup -c",
-    "lint": "eslint .",
-    "fix": "eslint . --fix --ext .js,.jsx",
     "test": "mocha --require babel-register test/**/*.spec.js",
     "prepare": "npm run build"
   },
