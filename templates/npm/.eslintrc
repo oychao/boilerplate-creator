@@ -5,26 +5,12 @@
         "es6": true
     },
     "parser": "babel-eslint",
-    "plugins": [
-        "react"
-    ],
+    "plugins": ["react"],
     "rules": {
         "strict": 1,
-        "comma-dangle": [
-            1,
-            "always"
-        ],
-        "semi": [
-            2,
-            "always"
-        ],
-        "quotes": [
-            2,
-            "single"
-        ],
-        "indent": [
-            2,
-            4
-        ]
+        "comma-dangle": [1, "never"],
+        "semi": [2, "always"],
+        "quotes": [2, "single"],
+        "indent": [2, 4]
     }
 }
