@@ -11,40 +11,36 @@
   "bin": {
     "helloworld": "./bin/bundle.js"
   },
-  "files": [
-    "LICENSE.md",
-    "README.md",
-    "bin/"
-  ],
+  "files": ["LICENSE.md", "README.md", "bin/"],
   "scripts": {
     "build": "rollup -c",
     "lint": "eslint .",
-    "fix": "eslint . --fix --ext .js,.jsx",
+    "fix": "eslint . --fix --ext .js",
     "test": "mocha --require babel-register test/**/*.spec.js",
     "prepare": "npm run build"
   },
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-register": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^7.0.0-beta.3",
     "babel-eslint": "^8.2.3",
     "chai": "^4.1.2",
     "eslint": "^4.19.1",
-    "mocha": "^5.1.0",
-    "mocha-sinon": "^2.0.0",
-    "rollup": "^0.57.1",
-    "rollup-plugin-json": "^2.3.0",
+    "mocha": "^5.2.0",
+    "mocha-sinon": "^2.1.0",
+    "rollup": "^0.59.1",
+    "rollup-plugin-json": "^3.0.0",
     "rollup-plugin-shebang": "^0.1.4",
-    "sinon": "^4.5.0"
+    "sinon": "^5.0.7"
   },
   "dependencies": {
-    "chalk": "^2.3.2",
+    "chalk": "^2.4.1",
     "commander": "^2.15.1",
     "mkdirp": "^0.5.1",
-    "ora": "^2.0.0",
-    "promise-jsonfile": "^1.0.1",
+    "ora": "^2.1.0",
+    "promise-jsonfile": "^1.0.3",
     "readline-sync": "^1.4.9",
-    "shelljs": "^0.8.1"
+    "shelljs": "^0.8.2"
   }
 }

@@ -33,21 +33,21 @@
   "devDependencies": {
     "babel-eslint": "^8.2.3",
     "eslint": "^4.19.1",
-    "eslint-plugin-react": "^7.7.0",
+    "eslint-plugin-react": "^7.8.2",
     "intelli-espower-loader": "^1.0.1",
-    "mocha": "^5.1.0",
-    "power-assert": "^1.4.4",
-    "rollup": "^0.57.1",
-    "rollup-plugin-json": "^2.3.0",
+    "mocha": "^5.2.0",
+    "power-assert": "^1.5.0",
+    "rollup": "^0.59.1",
+    "rollup-plugin-json": "^3.0.0",
     "rollup-plugin-shebang": "^0.1.4"
   },
   "dependencies": {
-    "chalk": "^2.3.2",
+    "chalk": "^2.4.1",
     "commander": "^2.15.1",
     "mkdirp": "^0.5.1",
-    "ora": "^2.0.0",
-    "promise-jsonfile": "^1.0.1",
+    "ora": "^2.1.0",
+    "promise-jsonfile": "^1.0.3",
     "readline-sync": "^1.4.9",
-    "shelljs": "^0.8.1"
+    "shelljs": "^0.8.2"
   }
 }

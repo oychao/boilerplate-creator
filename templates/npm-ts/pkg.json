@@ -7,25 +7,24 @@
   "repository": "your/github/repository",
   "keywords": [],
   "description": "npm",
+  "files": ["LICENSE.md", "README.md", "bin/"],
   "scripts": {
     "build": "rollup -c",
-    "lint": "eslint .",
-    "fix": "eslint . --fix --ext .js,.jsx",
     "test": "mocha --require babel-register test/**/*.spec.js",
     "prepare": "npm run build"
   },
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-register": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^7.0.0-beta.3",
     "chai": "^4.1.2",
-    "mocha": "^5.1.0",
-    "mocha-sinon": "^2.0.0",
-    "rollup": "^0.57.1",
-    "rollup-plugin-typescript2": "^0.13.0",
-    "sinon": "^4.5.0",
-    "typescript": "^2.8.1"
+    "mocha": "^5.2.0",
+    "mocha-sinon": "^2.1.0",
+    "rollup": "^0.59.1",
+    "rollup-plugin-typescript2": "^0.14.0",
+    "sinon": "^5.0.7",
+    "typescript": "^2.9.0-dev.20180519"
   },
   "dependencies": {}
 }
