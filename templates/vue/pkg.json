@@ -1,10 +1,11 @@
 {
-	"name": "rich-vue",
+	"name": "demo-vue",
 	"version": "1.0.0",
 	"main": "index.js",
-	"license": "MIT",
-	"repository": {},
-	"description": "rich vue",
+    "author": "Your name <your@email.address>",
+    "license": "WTFPL",
+    "repository": "your/github/repository",
+	"description": "vue",
 	"scripts": {
 		"build": "webpack",
 		"start": "webpack-dev-server",
