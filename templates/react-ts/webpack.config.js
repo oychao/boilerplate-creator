@@ -1,5 +1,6 @@
 const path = require('path');
-const TsConfigPathsPlugin = require('awesome-typescript-loader').TsConfigPathsPlugin;
+const TsConfigPathsPlugin = require('awesome-typescript-loader')
+    .TsConfigPathsPlugin;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -16,34 +17,37 @@ module.exports = {
         alias: {
             style: path.resolve(__dirname, 'src', 'style')
         },
-        plugins: [
-            new TsConfigPathsPlugin()
-        ]
+        plugins: [new TsConfigPathsPlugin()]
     },
     module: {
-        rules: [{
-            test: /\.tsx?$/,
-            use: ['awesome-typescript-loader']
-        }, {
-            enforce: 'pre',
-            test: /\.js$/,
-            use: ['source-map-loader']
-        }, {
-            test: /\.(css|less)$/,
-            use: ['style-loader', 'css-loader', 'less-loader']
-        }, {
-            test: /\.svg$/,
-            use: ['svg-inline-loader']
-        }]
+        rules: [
+            {
+                test: /\.tsx?$/,
+                use: ['awesome-typescript-loader']
+            },
+            {
+                enforce: 'pre',
+                test: /\.js$/,
+                use: ['source-map-loader']
+            },
+            {
+                test: /\.(css|less)$/,
+                use: ['style-loader', 'css-loader', 'less-loader']
+            },
+            {
+                test: /\.svg$/,
+                use: ['svg-inline-loader']
+            }
+        ]
     },
     devtool: 'source-map',
     devServer: {
         contentBase: './dist',
-        open: true,
+        open: true
     },
     externals: {
-        react: 'React',
-        'react-dom': 'ReactDOM'
+        // react: 'React',
+        // 'react-dom': 'ReactDOM'
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -54,5 +58,5 @@ module.exports = {
             defaultAttribute: 'defer'
         }),
         new CleanWebpackPlugin(path.resolve(__dirname, 'dist'))
-    ],
+    ]
 };

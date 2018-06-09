@@ -5,7 +5,7 @@
   "author": "Ouyang Chao <chao@ouyang.io>",
   "license": "WTFPL",
   "repository": "oychao/boilerplate-creator",
-  "description": "a cli tool",
+  "description": "a boilerplate cli tool",
   "keywords": [
     "boilerplate-creator",
     "boilerplate",
