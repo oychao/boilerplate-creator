@@ -7,41 +7,61 @@ import shell from 'shelljs';
 import ora from 'ora';
 
 import utils from './src/utils';
-import { version as VERSION, } from './package.json';
+import { version as VERSION } from './package.json';
 
-const { spinnerEcho, } = utils;
+const { spinnerEcho } = utils;
 const TEMPLATE_DIR = path.join(__dirname, '..', 'templates');
 const BPC_NAME = chalk.bold.blue(`boilerplate-creator ${VERSION}`);
-const npmTemps = ['npm', 'npm-ts', 'cli', 'cli-ts',];
-const legalTemps = npmTemps.concat(['react', 'react-ts', 'vue',]);
-const legalTempsHintStr = legalTemps.reduce((acc, temp) => `${acc}|${chalk.yellow(temp)}`, '').slice(1);
-const legalLics = ['MIT', 'WTFPL', 'Apache', 'GPL', 'BSD', 'Mozilla',];
+const npmTemps = ['npm', 'npm-ts', 'cli', 'cli-ts'];
+const legalTemps = npmTemps.concat(['react', 'react-ts', 'vue']);
+const legalTempsHintStr = legalTemps
+    .reduce((acc, temp) => `${acc}|${chalk.yellow(temp)}`, '')
+    .slice(1);
+const legalLics = ['MIT', 'WTFPL', 'Apache', 'GPL', 'BSD', 'Mozilla'];
 
 // error if no npm
-if(!shell.which('npm') || !shell.which('node')) {
-    shell.echo(`${chalk.red('Error:')} boilerplate-creator requires npm and nodejs.`);
+if (!shell.which('npm') || !shell.which('node')) {
+    shell.echo(
+        `${chalk.red('Error:')} boilerplate-creator requires npm and nodejs.`
+    );
     shell.exit(1);
 }
 
 // build a cli program
-program.name(chalk.green('bpc'))
+program
+    .name(chalk.green('bpc'))
     .usage(chalk.green('[project name] [options]'))
     .description(`${BPC_NAME}: create a boilerplate quickly`)
-    .option('-t, --template [temp]', `which template to use [temp] support(${legalTempsHintStr})`, 'react')
-    .option('-l, --license [lic]', `generate license file [lic] e.g.(${legalLics.join('|')})`, 'MIT')
+    .option(
+        '-t, --template [temp]',
+        `which template to use [temp] support(${legalTempsHintStr})`,
+        'react'
+    )
+    .option(
+        '-l, --license [lic]',
+        `generate license file [lic] e.g.(${legalLics.join('|')})`,
+        'MIT'
+    )
     .option('-f, --force', 'force on non-empty directory')
-    .option('    --ts', 'use typescript, \'bpc demo -t react-ts\' is equivalent to \'bpc demo -t react --ts\'')
+    .option(
+        '    --ts',
+        'use typescript, \'bpc demo -t react-ts\' is equivalent to \'bpc demo -t react --ts\''
+    )
     .version(VERSION, '-v, --version')
     .parse(process.argv);
 
 // handle typescript option
-if(program.ts && program.template.slice(-3, 0) !== '-ts') {
+if (program.ts && program.template.slice(-3, 0) !== '-ts') {
     program.template += '-ts';
 }
 
 // error if ileegal template name
-if(legalTemps.indexOf(program.template) === -1) {
-    shell.echo(`${chalk.red('Error:')} illegal template '${chalk.red(program.template)}'`);
+if (legalTemps.indexOf(program.template) === -1) {
+    shell.echo(
+        `${chalk.red('Error:')} illegal template '${chalk.red(
+            program.template
+        )}'`
+    );
     shell.echo(`Support (${legalTempsHintStr}).`);
     shell.exit(1);
 }
@@ -67,48 +87,97 @@ shell.echo();
 shell.echo(BPC_NAME);
 
 // check if target folder or file exists
-if(!program.force && utils.fExists(projectName)) {
+if (!program.force && utils.fExists(projectName)) {
     shell.echo();
-    if(!utils.confirm(`${chalk.yellow(projectName)} already exists, overwrite it? [y/N]`)) {
+    if (
+        !utils.confirm(
+            `${chalk.yellow(projectName)} already exists, overwrite it? [y/N]`
+        )
+    ) {
         shell.exit(1);
     }
 }
 
 // read package.json
-spinner = spinnerEcho(chalk.magentaBright('initializing configuration file', 'succeed'));
-jsonfile.read(path.join(TEMPLATE_DIR, program.template, 'pkg.json')).then(pkg => {
-    spinner.succeed();
-    // remove target folder if exists
-    shell.rm('-rf', projectName);
-    // create target folder and copy configuration files into it
-    utils.mkdir(projectName);
-    utils.copyTemplateMulti('_common', `${projectName}`, ['pkg.json',]);
-    utils.copyTemplateMulti(program.template, `${projectName}`, ['pkg.json',]);
-    pkg.license = program.license;
-    pkg.name = projectName;
-    utils.write(`${projectName}/package.json`, `${JSON.stringify(pkg, null, 2)}\n`);
-    // cd into target folder
-    shell.cd(projectName);
-    // install
-    spinner = spinnerEcho(chalk.magentaBright('installing npm dependencies, this may take a while'));
-    shell.exec('npm install', {silent: true,}, () => {
-        // done
+spinner = spinnerEcho(
+    chalk.magentaBright('initializing configuration file', 'succeed')
+);
+jsonfile
+    .read(path.join(TEMPLATE_DIR, program.template, 'pkg.json'))
+    .then(pkg => {
         spinner.succeed();
-        if(isApp) {
-            spinnerEcho(chalk.magentaBright('Get started with following commands: '), 'info');
-            shell.echo();
-            shell.echo(`   ${chalk.yellow('$')} ${chalk.blueBright(`cd ${projectName}`)}`);
-            shell.echo(`   ${chalk.yellow('$')} # do something`);
-            shell.echo(`   ${chalk.yellow('$')} ${chalk.blueBright('npm start')}`);
-        } else {
-            spinnerEcho(chalk.magentaBright('Edit your code and build the project: '), 'info');
-            shell.echo();
-            shell.echo(`   ${chalk.yellow('$')} ${chalk.blueBright(`cd ${projectName}`)}`);
-            shell.echo(`   ${chalk.yellow('$')} # do something`);
-            shell.echo(`   ${chalk.yellow('$')} ${chalk.blueBright('npm run build')}`);
-        }
-        spinnerEcho(chalk.magentaBright(`done in ${((new Date().getTime() - start) / 1e3).toFixed(2)}s, enjoy it!`), 'succeed');
+        // remove target folder if exists
+        shell.rm('-rf', projectName);
+        // create target folder and copy configuration files into it
+        utils.mkdir(projectName);
+        utils.copyTemplateMulti('_common', `${projectName}`, ['pkg.json']);
+        utils.copyTemplateMulti(program.template, `${projectName}`, [
+            'pkg.json'
+        ]);
+        pkg.license = program.license;
+        pkg.name = projectName;
+        utils.write(
+            `${projectName}/package.json`,
+            `${JSON.stringify(pkg, null, 2)}\n`
+        );
+        // cd into target folder
+        shell.cd(projectName);
+        // install
+        spinner = spinnerEcho(
+            chalk.magentaBright(
+                'installing npm dependencies, this may take a while'
+            )
+        );
+        shell.exec('npm install', { silent: true }, () => {
+            // done
+            spinner.succeed();
+            if (isApp) {
+                spinnerEcho(
+                    chalk.magentaBright(
+                        'Get started with following commands: '
+                    ),
+                    'info'
+                );
+                shell.echo();
+                shell.echo(
+                    `   ${chalk.yellow('$')} ${chalk.blueBright(
+                        `cd ${projectName}`
+                    )}`
+                );
+                shell.echo(`   ${chalk.yellow('$')} # do something`);
+                shell.echo(
+                    `   ${chalk.yellow('$')} ${chalk.blueBright('npm start')}`
+                );
+            } else {
+                spinnerEcho(
+                    chalk.magentaBright(
+                        'Edit your code and build the project: '
+                    ),
+                    'info'
+                );
+                shell.echo();
+                shell.echo(
+                    `   ${chalk.yellow('$')} ${chalk.blueBright(
+                        `cd ${projectName}`
+                    )}`
+                );
+                shell.echo(`   ${chalk.yellow('$')} # do something`);
+                shell.echo(
+                    `   ${chalk.yellow('$')} ${chalk.blueBright(
+                        'npm run build'
+                    )}`
+                );
+            }
+            spinnerEcho(
+                chalk.magentaBright(
+                    `done in ${((new Date().getTime() - start) / 1e3).toFixed(
+                        2
+                    )}s, enjoy it!`
+                ),
+                'succeed'
+            );
+        });
+    })
+    .catch(err => {
+        throw err;
     });
-}).catch(err => {
-    throw err;
-});
