@@ -1,11 +1,11 @@
 const path = require('path');
 const TsConfigPathsPlugin = require('awesome-typescript-loader')
-    .TsConfigPathsPlugin;
+.TsConfigPathsPlugin;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-module.exports = {
+const config = {
     mode: 'development',
     entry: './index.tsx',
     output: {
@@ -60,3 +60,19 @@ module.exports = {
         new CleanWebpackPlugin(path.resolve(__dirname, 'dist'))
     ]
 };
+
+if(process.env.NODE_ENV === 'production') {
+    config.mode = 'production';
+    config.devtool = 'source-map';
+    [new webpack.optimize.UglifyJsPlugin({
+        sourceMap: true,
+        compress: {
+            warnings: false
+        }
+    }),
+    new webpack.LoaderOptionsPlugin({
+        minimize: true
+    })].forEach(plugin => void (config.plugins.push(plugin)));
+}
+
+module.exports = config;

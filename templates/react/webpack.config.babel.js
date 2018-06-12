@@ -4,7 +4,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ScriptExtHtmlWebpackPlugin from 'script-ext-html-webpack-plugin';
 import CleanWebpackPlugin from 'clean-webpack-plugin';
 
-export default {
+const config = {
     mode: 'development',
     entry: ['@babel/polyfill', 'react-hot-loader/patch', './index.jsx'],
     output: {
@@ -58,3 +58,19 @@ export default {
         new webpack.HotModuleReplacementPlugin()
     ]
 };
+
+if(process.env.NODE_ENV === 'production') {
+    config.mode = 'production';
+    config.devtool = 'source-map';
+    [new webpack.optimize.UglifyJsPlugin({
+        sourceMap: true,
+        compress: {
+            warnings: false
+        }
+    }),
+    new webpack.LoaderOptionsPlugin({
+        minimize: true
+    })].forEach(plugin => void (config.plugins.push(plugin)));
+}
+
+export default config;
