@@ -1,5 +1,5 @@
 {
-    "name": "helloworld",
+    "name": "cli-demo",
     "version": "1.0.0",
     "main": "./bin/bundle.js",
     "author": "Your name <your@email.address>",
