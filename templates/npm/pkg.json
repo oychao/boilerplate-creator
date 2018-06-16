@@ -26,8 +26,9 @@
         "eslint-plugin-react": "^7.9.1",
         "mocha": "^5.2.0",
         "mocha-sinon": "^2.1.0",
-        "rollup": "^0.60.1",
-        "sinon": "^5.1.1"
+        "rollup": "^0.60.7",
+        "sinon": "^6.0.0"
     },
     "dependencies": {}
-}
+  }
+  
