@@ -5,7 +5,7 @@ import ScriptExtHtmlWebpackPlugin from 'script-ext-html-webpack-plugin';
 import CleanWebpackPlugin from 'clean-webpack-plugin';
 
 const config = {
-    mode: 'development',
+    mode: process.env.NODE_ENV,
     entry: ['@babel/polyfill', 'react-hot-loader/patch', './index.jsx'],
     output: {
         publicPath: '/',

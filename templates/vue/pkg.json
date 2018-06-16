@@ -7,8 +7,8 @@
     "repository": "your/github/repository",
     "description": "vue",
     "scripts": {
-        "build": "webpack",
-        "start": "webpack-dev-server",
+        "build": "cross-env NODE_ENV=production webpack",
+        "start": "cross-env NODE_ENV=development webpack-dev-server",
         "lint": "eslint .",
         "fix": "eslint . --fix --ext .js,.jsx",
         "test": "mocha --require intelli-espower-loader test/**/*.spec.js"
@@ -22,6 +22,7 @@
         "babel-eslint": "^8.2.3",
         "babel-loader": "^8.0.0-beta.3",
         "clean-webpack-plugin": "^0.1.19",
+        "cross-env": "^5.2.0",
         "css-loader": "^0.28.11",
         "eslint": "^4.19.1",
         "html-webpack-plugin": "^3.2.0",

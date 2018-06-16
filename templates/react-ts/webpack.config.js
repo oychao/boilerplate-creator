@@ -6,7 +6,7 @@ const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const config = {
-    mode: 'development',
+    mode: process.env.NODE_ENV,
     entry: './index.tsx',
     output: {
         filename: 'bundle.js',

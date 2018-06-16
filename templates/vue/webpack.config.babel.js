@@ -6,7 +6,7 @@ import CleanWebpackPlugin from 'clean-webpack-plugin';
 import VueLoader from 'vue-loader';
 
 const config = {
-    mode: 'development',
+    mode: process.env.NODE_ENV,
     entry: ['./index.js'],
     output: {
         publicPath: '/',
