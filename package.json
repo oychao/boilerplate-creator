@@ -1,53 +1,53 @@
 {
-  "name": "boilerplate-creator",
-  "version": "2.0.0",
-  "main": "index.js",
-  "author": "Ouyang Chao <chao@ouyang.io>",
-  "license": "WTFPL",
-  "repository": "oychao/boilerplate-creator",
-  "description": "a cli tool",
-  "keywords": [
-    "boilerplate-creator",
-    "boilerplate",
-    "npm",
-    "cli",
-    "react"
-  ],
-  "scripts": {
-    "build": "rollup -c",
-    "lint": "eslint .",
-    "fix": "eslint . --fix --ext .js,.jsx",
-    "test": "mocha --require intelli-espower-loader test/**/*.spec.js",
-    "prepare": "npm run build"
-  },
-  "preferGlobal": true,
-  "bin": {
-    "bpc": "./bin/bundle.js"
-  },
-  "files": [
-    "LICENSE.md",
-    "README.md",
-    "bin/",
-    "templates/"
-  ],
-  "devDependencies": {
-    "babel-eslint": "^8.2.3",
-    "eslint": "^4.19.1",
-    "eslint-plugin-react": "^7.8.2",
-    "intelli-espower-loader": "^1.0.1",
-    "mocha": "^5.2.0",
-    "power-assert": "^1.5.0",
-    "rollup": "^0.59.1",
-    "rollup-plugin-json": "^3.0.0",
-    "rollup-plugin-shebang": "^0.1.4"
-  },
-  "dependencies": {
-    "chalk": "^2.4.1",
-    "commander": "^2.15.1",
-    "mkdirp": "^0.5.1",
-    "ora": "^2.1.0",
-    "promise-jsonfile": "^1.0.3",
-    "readline-sync": "^1.4.9",
-    "shelljs": "^0.8.2"
-  }
+    "name": "boilerplate-creator",
+    "version": "2.0.0",
+    "main": "index.js",
+    "author": "Ouyang Chao <chao@ouyang.io>",
+    "license": "WTFPL",
+    "repository": "oychao/boilerplate-creator",
+    "description": "a boilerplate cli tool",
+    "keywords": [
+        "boilerplate-creator",
+        "boilerplate",
+        "npm",
+        "cli",
+        "react"
+    ],
+    "scripts": {
+        "build": "rollup -c",
+        "lint": "eslint .",
+        "fix": "eslint . --fix --ext .js,.jsx",
+        "test": "mocha --require intelli-espower-loader test/**/*.spec.js",
+        "prepare": "npm run build"
+    },
+    "preferGlobal": true,
+    "bin": {
+        "bpc": "./bin/bundle.js"
+    },
+    "files": [
+        "LICENSE.md",
+        "README.md",
+        "bin/",
+        "templates/"
+    ],
+    "devDependencies": {
+        "babel-eslint": "^8.2.3",
+        "eslint": "^4.19.1",
+        "eslint-plugin-react": "^7.9.1",
+        "intelli-espower-loader": "^1.0.1",
+        "mocha": "^5.2.0",
+        "power-assert": "^1.5.0",
+        "rollup": "^0.60.1",
+        "rollup-plugin-json": "^3.0.0",
+        "rollup-plugin-shebang": "^0.1.4"
+    },
+    "dependencies": {
+        "chalk": "^2.4.1",
+        "commander": "^2.15.1",
+        "mkdirp": "^0.5.1",
+        "ora": "^2.1.0",
+        "promise-jsonfile": "^1.0.3",
+        "readline-sync": "^1.4.9",
+        "shelljs": "^0.8.2"
+    }
 }

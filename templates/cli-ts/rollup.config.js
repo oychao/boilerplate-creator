@@ -8,18 +8,18 @@ export default [
         output: [
             {
                 file: 'bin/bundle.js',
-                format: 'cjs',
-            },
+                format: 'cjs'
+            }
         ],
         plugins: [
             typescript(),
             shebang({
-                shebang: '#!/usr/bin/env node',
+                shebang: '#!/usr/bin/env node'
             }),
             json({
                 preferConst: true,
-                indent: '  ',
-            }),
+                indent: '  '
+            })
         ],
         external: [
             'fs',
@@ -29,7 +29,7 @@ export default [
             'chalk',
             'ora',
             'promise-jsonfile',
-            'shelljs',
-        ],
-    },
+            'shelljs'
+        ]
+    }
 ];

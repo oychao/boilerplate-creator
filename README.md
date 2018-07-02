@@ -28,16 +28,23 @@ $ npm i -g boilerplate-creator
 $ bpc [project name] [options]
 ```
 
-### Create a React boilerplate
+### Create a React project
 
 ```bash
-$ bpc helloreact
-$ # or bpc helloreact -t react
+$ bpc helloreact -t react
 $ # react in typescript
 $ bpc helloreactts -t react --ts
 ```
 
-### Create a normal NPM boilerplate or a CLI tool
+### Create a Vue project
+
+```bash
+$ bpc hellovue -t vue
+$ # vue in typescript
+$ bpc hellovuets -t vue --ts
+```
+
+### Create a NPM package or a CLI tool
 
 ```bash
 $ bpc hellonpm -t npm
@@ -48,7 +55,7 @@ $ bpc hellocli -t cli --ts
 
 ### Get Help document
 
-There are 6 templates(npm|npm-ts|cli|cli-ts|react|react-ts) are supported for now, please check the help document for more information.
+There are 8 templates(npm|npm-ts|cli|cli-ts|react|react-ts|vue|vue-ts) are supported for now, please check the help document for more information.
 
 ```bash
 $ bpc --help

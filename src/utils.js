@@ -11,7 +11,7 @@ const MODE_0755 = parseInt('0755', 8);
 const TEMPLATE_DIR = path.join(__dirname, '..', 'templates');
 
 const filenameMap = {
-    'npmignore': '.npmignore',
+    npmignore: '.npmignore'
 };
 const __getRealname = key => filenameMap[key] || key;
 
@@ -20,7 +20,7 @@ const spinnerEcho = (info, done) => {
     const spinner = new ora({
         text: info,
         color: 'green',
-        spinner: 'arrow3',
+        spinner: 'arrow3'
     }).start();
     if (done) {
         spinner[done]();
@@ -32,7 +32,7 @@ const spinnerEcho = (info, done) => {
 const confirm = (msg, cb) => /^y|yes|ok|true$/i.test(readline.question(msg));
 
 const write = (file, str, mode) => {
-    fs.writeFileSync(file, str, { mode: mode || MODE_0666, });
+    fs.writeFileSync(file, str, { mode: mode || MODE_0666 });
     shell.echo(`${chalk.cyanBright('   create: ')}${file}`);
 };
 
@@ -57,7 +57,10 @@ const copyTemplateMulti = (fromDir, toDir, excludes = []) => {
     fs.readdirSync(path.join(TEMPLATE_DIR, fromDir))
         .filter(file => excludes.indexOf(file) === -1)
         .forEach(name => {
-            copyTemplate(path.join(fromDir, name), path.join(toDir, __getRealname(name)));
+            copyTemplate(
+                path.join(fromDir, name),
+                path.join(toDir, __getRealname(name))
+            );
         });
 };
 
@@ -70,4 +73,12 @@ const fExists = target => {
     }
 };
 
-export default { spinnerEcho, confirm, write, mkdir, copyTemplate, copyTemplateMulti, fExists, };
+export default {
+    spinnerEcho,
+    confirm,
+    write,
+    mkdir,
+    copyTemplate,
+    copyTemplateMulti,
+    fExists
+};

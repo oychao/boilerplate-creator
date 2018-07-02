@@ -6,10 +6,10 @@ export default [
         output: [
             {
                 file: 'bin/bundle.js',
-                format: 'umd',
-            },
+                format: 'umd'
+            }
         ],
-        plugins: [typescript(),],
-        external: ['fs', 'path', 'jsonfile',],
-    },
+        plugins: [typescript()],
+        external: ['fs', 'path', 'jsonfile']
+    }
 ];
