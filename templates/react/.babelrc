@@ -1,15 +1,13 @@
 {
-    "presets": [
-        "@babel/preset-env",
-        [
-            "@babel/preset-stage-0",
-            {
-                "decoratorsLegacy": true
-            }
-        ]
-    ],
-    "plugins": [
-        "react-hot-loader/babel",
-        "@babel/plugin-transform-react-jsx"
+  "presets": [
+    "@babel/preset-env",
+    [
+      "@babel/preset-stage-0",
+      {
+        "decoratorsLegacy": true,
+        "pipelineProposal": "minimal"
+      }
     ]
+  ],
+  "plugins": ["react-hot-loader/babel", "@babel/plugin-transform-react-jsx"]
 }
