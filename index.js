@@ -117,7 +117,7 @@ jsonfile
         pkg.license = program.license;
         pkg.name = projectName;
         utils.write(
-            `${projectName}/package.json`,
+            `${projectName}${path.sep}package.json`,
             `${JSON.stringify(pkg, null, 2)}\n`
         );
         // cd into target folder
