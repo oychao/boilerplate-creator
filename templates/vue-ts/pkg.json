@@ -1,26 +1,21 @@
 {
-  "name": "react-ts-demo",
+  "name": "vue-ts-demo",
   "version": "1.0.0",
   "main": "index.js",
   "author": "Your name <your@email.address>",
   "license": "WTFPL",
   "repository": "your/github/repository",
   "keywords": [],
-  "description": "react in typescript",
+  "description": "vue in typescript",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack",
     "start": "cross-env NODE_ENV=development webpack-dev-server",
     "test": "mocha --require intelli-espower-loader test/**/*.spec.js"
   },
   "devDependencies": {
-    "@types/react": "^16.4.6",
-    "@types/react-dom": "^16.0.6",
-    "@types/react-redux": "^6.0.4",
-    "awesome-typescript-loader": "^5.2.0",
     "clean-webpack-plugin": "^0.1.19",
     "cross-env": "^5.2.0",
     "css-loader": "^1.0.0",
-    "file-loader": "^1.1.11",
     "html-webpack-plugin": "^3.2.0",
     "intelli-espower-loader": "^1.0.1",
     "less": "^3.7.1",
@@ -30,19 +25,20 @@
     "script-ext-html-webpack-plugin": "^2.0.1",
     "source-map-loader": "^0.2.3",
     "style-loader": "^0.21.0",
-    "svg-inline-loader": "^0.8.0",
+    "ts-loader": "^4.4.0",
     "typescript": "^2.9.2",
     "url-loader": "^1.0.1",
+    "vue-loader": "^15.2.4",
+    "vue-template-compiler": "^2.5.17-beta.0",
     "webpack": "^4.16.0",
     "webpack-cli": "^3.0.8",
     "webpack-dev-server": "^3.1.4"
   },
   "dependencies": {
-    "immer": "^1.3.1",
-    "react-redux": "^5.0.7",
-    "react-router-dom": "^4.3.1",
-    "react-router-redux": "^5.0.0-alpha.9",
-    "redux-actions": "^2.4.0",
-    "redux-thunk": "^2.3.0"
+    "vue": "^2.5.17-beta.0",
+    "vue-class-component": "^6.2.0",
+    "vue-property-decorator": "^7.0.0",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1"
   }
 }
