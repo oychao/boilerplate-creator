@@ -12,14 +12,12 @@
 </template>
 
 <script>
-
 export default {
-  data () {
+  data() {
     return {};
-  },
+  }
 };
 </script>
 
-<style>
-.example {}
+<style lang="less">
 </style>

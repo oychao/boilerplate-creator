@@ -1,11 +1,13 @@
 {
-	"presets": [
-		"@babel/preset-env", [
-			"@babel/preset-stage-0",
-			{
-				"decoratorsLegacy": true
-			}
-		]
-	],
-	"plugins": []
+  "presets": [
+    "@babel/preset-env",
+    [
+      "@babel/preset-stage-0",
+      {
+        "decoratorsLegacy": true,
+        "pipelineProposal": "minimal"
+      }
+    ]
+  ],
+  "plugins": []
 }

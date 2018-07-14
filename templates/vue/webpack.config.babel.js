@@ -46,7 +46,7 @@ const config = {
     },
     externals: {},
     plugins: [
-        new CleanWebpackPlugin(['dist']),
+        new CleanWebpackPlugin(path.resolve(__dirname, 'dist')),
         new HtmlWebpackPlugin({
             template: 'index.html'
         }),

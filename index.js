@@ -13,7 +13,7 @@ const { spinnerEcho } = utils;
 const TEMPLATE_DIR = path.join(__dirname, '..', 'templates');
 const BPC_NAME = chalk.bold.blue(`boilerplate-creator ${VERSION}`);
 const npmTemps = ['npm', 'npm-ts', 'cli', 'cli-ts'];
-const legalTemps = npmTemps.concat(['react', 'react-ts', 'vue']);
+const legalTemps = npmTemps.concat(['react', 'react-ts', 'vue', 'vue-ts']);
 const legalTempsHintStr = legalTemps
     .reduce((acc, temp) => `${acc}|${chalk.yellow(temp)}`, '')
     .slice(1);
@@ -117,7 +117,7 @@ jsonfile
         pkg.license = program.license;
         pkg.name = projectName;
         utils.write(
-            `${projectName}/package.json`,
+            `${projectName}${path.sep}package.json`,
             `${JSON.stringify(pkg, null, 2)}\n`
         );
         // cd into target folder

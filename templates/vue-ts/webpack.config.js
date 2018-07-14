@@ -1,29 +1,43 @@
 const path = require('path');
-const TsConfigPathsPlugin = require('awesome-typescript-loader')
-  .TsConfigPathsPlugin;
+const webpack = require('webpack');
+const TsConfigPathsPlugin = require('ts-loader');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const VueLoader = require('vue-loader');
 
 const config = {
   mode: process.env.NODE_ENV,
-  entry: './index.tsx',
+  entry: './index.ts',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.json', '.less'],
+    extensions: ['.ts', '.tsx', '.js', 'vue', '.json', '.less'],
     alias: {
-      style: path.resolve(__dirname, 'src', 'style')
-    },
-    plugins: [new TsConfigPathsPlugin()]
+      vue: 'vue/dist/vue.js',
+      style: path.resolve(__dirname, 'src', 'style'),
+      comps: path.resolve(__dirname, 'src', 'components')
+    }
   },
   module: {
     rules: [
       {
+        test: /\.vue$/,
+        use: ['vue-loader']
+      },
+      {
         test: /\.tsx?$/,
-        use: ['awesome-typescript-loader']
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'ts-loader',
+            options: {
+              appendTsSuffixTo: [/\.vue$/]
+            }
+          }
+        ]
       },
       {
         enforce: 'pre',
@@ -33,10 +47,6 @@ const config = {
       {
         test: /\.(css|less)$/,
         use: ['style-loader', 'css-loader', 'less-loader']
-      },
-      {
-        test: /\.svg$/,
-        use: ['svg-inline-loader']
       }
     ]
   },
@@ -57,7 +67,8 @@ const config = {
     }),
     new ScriptExtHtmlWebpackPlugin({
       defaultAttribute: 'defer'
-    })
+    }),
+    new VueLoader.VueLoaderPlugin()
   ]
 };
 

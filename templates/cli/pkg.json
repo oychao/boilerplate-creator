@@ -1,47 +1,46 @@
 {
-    "name": "cli-demo",
-    "version": "1.0.0",
-    "main": "./bin/bundle.js",
-    "author": "Your name <your@email.address>",
-    "license": "WTFPL",
-    "repository": "your/github/repository",
-    "keywords": [],
-    "description": "a cli tool",
-    "preferGlobal": true,
-    "bin": {
-        "helloworld": "./bin/bundle.js"
-    },
-    "files": ["LICENSE.md", "README.md", "bin/"],
-    "scripts": {
-        "build": "rollup -c",
-        "lint": "eslint .",
-        "fix": "eslint . --fix --ext .js",
-        "test": "mocha --require babel-register test/**/*.spec.js",
-        "prepare": "npm run build"
-    },
-    "devDependencies": {
-        "babel-core": "^6.26.3",
-        "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
-        "babel-preset-env": "^1.7.0",
-        "babel-register": "^7.0.0-beta.3",
-        "babel-eslint": "^8.2.3",
-        "chai": "^4.1.2",
-        "eslint": "^4.19.1",
-        "mocha": "^5.2.0",
-        "mocha-sinon": "^2.1.0",
-        "rollup": "^0.60.7",
-        "rollup-plugin-json": "^3.0.0",
-        "rollup-plugin-shebang": "^0.1.5",
-        "sinon": "^6.0.0"
-    },
-    "dependencies": {
-        "chalk": "^2.4.1",
-        "commander": "^2.15.1",
-        "mkdirp": "^0.5.1",
-        "ora": "^2.1.0",
-        "promise-jsonfile": "^1.0.3",
-        "readline-sync": "^1.4.9",
-        "shelljs": "^0.8.2"
-    }
+  "name": "cli-demo",
+  "version": "1.0.0",
+  "main": "./bin/bundle.js",
+  "author": "Your name <your@email.address>",
+  "license": "WTFPL",
+  "repository": "your/github/repository",
+  "keywords": [],
+  "description": "a cli tool",
+  "preferGlobal": true,
+  "bin": {
+    "helloworld": "./bin/bundle.js"
+  },
+  "files": ["LICENSE.md", "README.md", "bin/"],
+  "scripts": {
+    "build": "rollup -c",
+    "lint": "eslint .",
+    "fix": "eslint . --fix --ext .js",
+    "test": "mocha --require babel-register test/**/*.spec.js",
+    "prepare": "npm run build"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^7.0.0-beta.3",
+    "babel-eslint": "^8.2.6",
+    "chai": "^4.1.2",
+    "eslint": "^5.1.0",
+    "mocha": "^5.2.0",
+    "mocha-sinon": "^2.1.0",
+    "rollup": "^0.62.0",
+    "rollup-plugin-json": "^3.0.0",
+    "rollup-plugin-shebang": "^0.1.5",
+    "sinon": "^6.1.3"
+  },
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "commander": "^2.16.0",
+    "mkdirp": "^0.5.1",
+    "ora": "^2.1.0",
+    "promise-jsonfile": "^1.0.3",
+    "readline-sync": "^1.4.9",
+    "shelljs": "^0.8.2"
   }
-  
+}
