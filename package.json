@@ -31,21 +31,21 @@
         "templates/"
     ],
     "devDependencies": {
-        "babel-eslint": "^8.2.3",
-        "eslint": "^4.19.1",
-        "eslint-plugin-react": "^7.9.1",
+        "babel-eslint": "^8.2.6",
+        "eslint": "^5.3.0",
+        "eslint-plugin-react": "^7.10.0",
         "intelli-espower-loader": "^1.0.1",
         "mocha": "^5.2.0",
-        "power-assert": "^1.5.0",
-        "rollup": "^0.60.1",
+        "power-assert": "^1.6.0",
+        "rollup": "^0.64.1",
         "rollup-plugin-json": "^3.0.0",
-        "rollup-plugin-shebang": "^0.1.4"
+        "rollup-plugin-shebang": "^0.1.5"
     },
     "dependencies": {
         "chalk": "^2.4.1",
-        "commander": "^2.15.1",
+        "commander": "^2.17.1",
         "mkdirp": "^0.5.1",
-        "ora": "^2.1.0",
+        "ora": "^3.0.0",
         "promise-jsonfile": "^1.0.3",
         "readline-sync": "^1.4.9",
         "shelljs": "^0.8.2"
