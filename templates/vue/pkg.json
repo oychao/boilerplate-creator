@@ -14,13 +14,28 @@
     "test": "mocha --require intelli-espower-loader test/**/*.spec.js"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0-beta.53",
-    "@babel/polyfill": "^7.0.0-beta.53",
-    "@babel/preset-env": "^7.0.0-beta.53",
-    "@babel/preset-stage-0": "^7.0.0-beta.53",
-    "@babel/register": "^7.0.0-beta.53",
+    "@babel/core": "^7.0.0-7.0.0-rc.1",
+    "@babel/plugin-proposal-class-properties": "7.0.0-rc.1",
+    "@babel/plugin-proposal-decorators": "7.0.0-rc.1",
+    "@babel/plugin-proposal-do-expressions": "7.0.0-rc.1",
+    "@babel/plugin-proposal-export-default-from": "7.0.0-rc.1",
+    "@babel/plugin-proposal-export-namespace-from": "7.0.0-rc.1",
+    "@babel/plugin-proposal-function-bind": "7.0.0-rc.1",
+    "@babel/plugin-proposal-function-sent": "7.0.0-rc.1",
+    "@babel/plugin-proposal-json-strings": "7.0.0-rc.1",
+    "@babel/plugin-proposal-logical-assignment-operators": "7.0.0-rc.1",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "7.0.0-rc.1",
+    "@babel/plugin-proposal-numeric-separator": "7.0.0-rc.1",
+    "@babel/plugin-proposal-optional-chaining": "7.0.0-rc.1",
+    "@babel/plugin-proposal-pipeline-operator": "7.0.0-rc.1",
+    "@babel/plugin-proposal-throw-expressions": "7.0.0-rc.1",
+    "@babel/plugin-syntax-dynamic-import": "7.0.0-rc.1",
+    "@babel/plugin-syntax-import-meta": "7.0.0-rc.1",
+    "@babel/polyfill": "^7.0.0-7.0.0-rc.1",
+    "@babel/preset-env": "^7.0.0-7.0.0-rc.1",
+    "@babel/register": "^7.0.0-7.0.0-rc.1",
     "babel-eslint": "^8.2.6",
-    "babel-loader": "^8.0.0-beta.3",
+    "babel-loader": "^8.0.0-beta.4",
     "clean-webpack-plugin": "^0.1.19",
     "cross-env": "^5.2.0",
     "css-loader": "^1.0.0",
@@ -39,7 +54,7 @@
     "webpack-dev-server": "^3.1.4"
   },
   "dependencies": {
-    "vue": "^2.5.17-beta.0",
+    "vue": "^2.5.17",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
   }
