@@ -11,28 +11,28 @@ import demoAlive from './src/components/demo-alive.vue';
 Vue.use(VueRouter);
 
 const router = new VueRouter({
-    routes: [
-        {
-            path: '/demo-counter',
-            component: demoCounter,
-        },
-        {
-            path: '/demo-model',
-            component: demoModel,
-        },
-        {
-            path: '/demo-alive',
-            component: demoAlive,
-        },
-    ],
+  routes: [
+    {
+      path: '/demo-counter',
+      component: demoCounter
+    },
+    {
+      path: '/demo-model',
+      component: demoModel
+    },
+    {
+      path: '/demo-alive',
+      component: demoAlive
+    }
+  ]
 });
 
 new Vue({
-    el: '#root',
-    template: '<app />',
-    store,
-    router,
-    components: {
-        app,
-    },
+  el: '#root',
+  template: '<app />',
+  store,
+  router,
+  components: {
+    app
+  }
 });

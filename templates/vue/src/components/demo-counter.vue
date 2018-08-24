@@ -10,16 +10,15 @@
 <script>
 import Vuex from 'vuex';
 export default {
-    name: 'demo-counter',
-    computed: {
-        ...Vuex.mapState(['count',]),
-    },
-    methods: {
-        ...Vuex.mapMutations(['increment', 'decrement',]),
-    }
+  name: 'demo-counter',
+  computed: {
+    ...Vuex.mapState(['count'])
+  },
+  methods: {
+    ...Vuex.mapMutations(['increment', 'decrement'])
+  }
 };
 </script>
 
 <style scoped>
-    
 </style>
