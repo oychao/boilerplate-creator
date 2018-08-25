@@ -1,12 +1,15 @@
 {
-  "name": "demo",
+  "name": "cli-demo",
   "version": "1.0.0",
   "main": "index.js",
-  "author": "Your name <your@email.address>",
-  "license": "MIT",
-  "repository": "your/github/repository",
+  "author": {
+    "name": "your name",
+    "email": "your@email.com"
+  },
+  "license": "WTFPL",
+  "repository": "https://github.com/your/package/address",
   "keywords": [],
-  "description": "react",
+  "description": "A react demo",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack",
     "start": "cross-env NODE_ENV=development webpack-dev-server",

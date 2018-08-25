@@ -3,19 +3,19 @@
   "version": "1.0.0",
   "main": "./bin/bundle.js",
   "author": {
-    "name": "ouyang-chao",
-    "email": "chao@ouyang.io"
+    "name": "your name",
+    "email": "your@email.com"
   },
   "license": "WTFPL",
-  "repository": "https://github.com/",
+  "repository": "https://github.com/your/package/address",
   "keywords": [],
   "description": "A npm package",
   "files": ["LICENSE.md", "README.md", "bin/"],
   "scripts": {
-    "build": "rollup -c",
+    "build": "cross-env NODE_ENV=production rollup -c",
     "lint": "eslint .",
     "fix": "eslint . --fix --ext .js",
-    "test": "mocha --require @babel/register test/**/*.spec.js",
+    "test": "cross-env NODE_ENV=test mocha --require @babel/register test/**/*.spec.js",
     "prepare": "npm run build"
   },
   "devDependencies": {
@@ -42,6 +42,7 @@
     "@babel/register": "7.0.0-beta.56",
     "babel-eslint": "^8.2.6",
     "chai": "^4.1.2",
+    "cross-env": "^5.2.0",
     "eslint": "^5.4.0",
     "eslint-plugin-react": "^7.11.1",
     "mocha": "^5.2.0",
