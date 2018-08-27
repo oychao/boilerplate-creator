@@ -1,30 +1,34 @@
 import shebang from 'rollup-plugin-shebang';
 import json from 'rollup-plugin-json';
 
-export default [{
+export default [
+  {
     input: './index.js',
-    output: [{
+    output: [
+      {
         file: 'bin/bundle.js',
-        format: 'cjs',
-    },],
+        format: 'cjs'
+      }
+    ],
     plugins: [
-        shebang({
-            shebang: '#!/usr/bin/env node',
-        }),
-        json({
-            preferConst: true,
-            indent: '  ',
-        }),
+      shebang({
+        shebang: '#!/usr/bin/env node'
+      }),
+      json({
+        preferConst: true,
+        indent: '  '
+      })
     ],
     external: [
-        'fs',
-        'path',
-        'chalk',
-        'commander',
-        'mkdirp',
-        'ora',
-        'promise-jsonfile',
-        'readline-sync',
-        'shelljs',
-    ],
-},];
+      'fs',
+      'path',
+      'chalk',
+      'commander',
+      'mkdirp',
+      'ora',
+      'promise-jsonfile',
+      'readline-sync',
+      'shelljs'
+    ]
+  }
+];

@@ -1,11 +1,11 @@
 <!-- src/components/HelloDecorator.vue -->
 <!-- This is an alternative way to define the Hello component using decorators -->
 <template>
-    <div>
-        <div class="greeting">{{value}}</div>
-        <button @click="decrement">-</button>
-        <button @click="increment">+</button>
-    </div>
+  <div>
+    <div class="greeting">{{value}}</div>
+    <button @click="decrement">-</button>
+    <button @click="increment">+</button>
+  </div>
 </template>
 
 <script lang="ts">

@@ -1,13 +1,19 @@
-export default [
+import babel from 'rollup-plugin-babel';
+
+export default {
+  input: './index.js',
+  output: [
     {
-        input: './index.js',
-        output: [
-            {
-                file: 'bin/bundle.js',
-                format: 'umd'
-            }
-        ],
-        plugins: [],
-        external: ['fs', 'path', 'jsonfile']
+      file: 'bin/bundle.js',
+      format: 'umd'
     }
-];
+  ],
+  plugins: [
+    babel({
+      exclude: 'node_modules/**',
+      externalHelpers: true,
+      plugins: ['@babel/external-helpers']
+    })
+  ],
+  external: ['fs', 'path', 'jsonfile']
+};
