@@ -1,9 +1,9 @@
 <template>
-    <div>
-        <input v-model="content" ref="input">
-        <br>
-        <span>{{status}}</span>
-    </div>
+  <div>
+    <input v-model="content" ref="input">
+    <br>
+    <span>{{status}}</span>
+  </div>
 </template>
 
 <script>
