@@ -7,6 +7,7 @@ import shell from 'shelljs';
 import ora from 'ora';
 
 import utils from './src/utils';
+import done from './src/done';
 import { version as VERSION } from './package.json';
 
 const { spinnerEcho } = utils;
@@ -43,6 +44,7 @@ program
     'MIT'
   )
   .option('-f, --force', 'force on non-empty directory')
+  .option('-i, --install', 'install dependencies automatically')
   .option(
     '    --ts',
     'use typescript, \'bpc demo -t react-ts\' is equivalent to \'bpc demo -t react --ts\''
@@ -118,47 +120,23 @@ jsonfile
     );
     // cd into target folder
     shell.cd(projectName);
-    // install
-    spinner = spinnerEcho(
-      chalk.magentaBright('installing npm dependencies, this may take a while')
-    );
-    shell.exec('npm install', { silent: true }, () => {
-      // done
-      spinner.succeed();
-      if (isApp) {
-        spinnerEcho(
-          chalk.magentaBright('Get started with following commands: '),
-          'info'
-        );
-        shell.echo();
-        shell.echo(
-          `   ${chalk.yellow('$')} ${chalk.blueBright(`cd ${projectName}`)}`
-        );
-        shell.echo(`   ${chalk.yellow('$')} # do something`);
-        shell.echo(`   ${chalk.yellow('$')} ${chalk.blueBright('npm start')}`);
-      } else {
-        spinnerEcho(
-          chalk.magentaBright('Edit your code and build the project: '),
-          'info'
-        );
-        shell.echo();
-        shell.echo(
-          `   ${chalk.yellow('$')} ${chalk.blueBright(`cd ${projectName}`)}`
-        );
-        shell.echo(`   ${chalk.yellow('$')} # do something`);
-        shell.echo(
-          `   ${chalk.yellow('$')} ${chalk.blueBright('npm run build')}`
-        );
-      }
-      spinnerEcho(
+
+    if (program.install) {
+      // install
+      spinner = spinnerEcho(
         chalk.magentaBright(
-          `done in ${((new Date().getTime() - start) / 1e3).toFixed(
-            2
-          )}s, enjoy it!`
-        ),
-        'succeed'
+          'installing npm dependencies, this may take a while'
+        )
       );
-    });
+
+      shell.exec('npm install', { silent: true }, () => {
+        // done
+        spinner.succeed();
+        done(spinner, projectName, isApp, true, start);
+      });
+    } else {
+      done(spinner, projectName, isApp, false, start);
+    }
   })
   .catch(err => {
     throw err;
