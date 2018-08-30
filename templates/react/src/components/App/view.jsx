@@ -1,51 +1,41 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { HashRouter, Route, Redirect, Link } from 'react-router-dom';
 import { hot } from 'react-hot-loader';
 
-import * as actions from './actions';
+import Counter from '../Counter';
+import Input from '../Input';
 
-import logo from './logo.svg';
 import './style.less';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.handleCount = this.handleCount.bind(this);
-  }
-
-  handleCount() {
-    this.props.handleCount(1);
   }
 
   render() {
-    const { count } = this.props;
     return (
-      <div className="App">
-        <header className="App-header">
-          <div
-            dangerouslySetInnerHTML={{ __html: logo }}
-            className="App-logo"
-          />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-                    To get started, edit{' '}
-          <code>src/components/App/view.jsx</code> and save to reload.
-        </p>
-        <div>
-          <h2>{count}</h2>
-          <button onClick={this.handleCount}>Click me!</button>
-        </div>
+      <div className="app">
+        <h1>React</h1>
+        <HashRouter>
+          <div>
+            <ul className="app__router">
+              <li>
+                <Link to="/counter">Counter</Link>
+              </li>
+              <li>
+                <Link to="/input">Input</Link>
+              </li>
+            </ul>
+            <hr />
+            <Route exact path="/" render={() => <Redirect to="/counter" />} />
+            <Route exact path="/counter" component={Counter.view} />
+            <Route exact path="/input" component={Input.view} />
+          </div>
+        </HashRouter>
       </div>
     );
   }
 }
 
-const mapStateToProps = (state, props) => ({
-  count: state.count
-});
-const mapDispatchToProps = (dispatch, props) => ({
-  handleCount: num => dispatch(actions.add(num))
-});
-
-export default hot(module)(connect(mapStateToProps, mapDispatchToProps)(App));
+export default hot(module)(App);

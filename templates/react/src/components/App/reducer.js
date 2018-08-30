@@ -4,15 +4,20 @@ import * as actionTypes from './actionTypes';
 
 export default (
   state = {
-    count: 0
+    count: 0,
+    text: ''
   },
-  action
+  { type, payload }
 ) => {
-  const { type, payload } = action;
   return produce(state, draft => {
+    console.log(draft.text);
     switch (type) {
     case actionTypes.ADD:
       draft.count += payload.num;
+      break;
+    case actionTypes.INPUT:
+      draft.text = payload.text;
+      break;
     default:
     }
     return draft;

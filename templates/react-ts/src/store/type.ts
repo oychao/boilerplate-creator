@@ -1,7 +1,7 @@
 interface IPartialAction {
-    payload: any;
+  payload: any;
 }
 
 export interface IAction extends Partial<IPartialAction> {
-    type: string;
+  type: string;
 }

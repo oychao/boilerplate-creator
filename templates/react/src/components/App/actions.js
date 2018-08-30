@@ -8,3 +8,10 @@ export const add = num => ({
     num
   }
 });
+
+export const input = text => ({
+  type: actionTypes.INPUT,
+  payload: {
+    text
+  }
+});

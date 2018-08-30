@@ -4,7 +4,7 @@ import App from '../components/App';
 
 // do not use this enhancer when in production environment
 const composeEnhancers =
-    (<any>window).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+  (<any>window).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(App.reducer, composeEnhancers());
 
