@@ -1,25 +1,31 @@
-<!-- src/components/HelloDecorator.vue -->
-<!-- This is an alternative way to define the Hello component using decorators -->
 <template>
   <div>
-    <div class="greeting">{{value}}</div>
+    <div class="greeting">{{count}}</div>
     <button @click="decrement">-</button>
     <button @click="increment">+</button>
   </div>
 </template>
 
 <script lang="ts">
+import { mapGetters, mapActions } from 'vuex';
 import { Vue, Component } from 'vue-property-decorator';
 
-@Component
+@Component({
+  computed: {
+    ...mapGetters(['count'])
+  },
+  methods: {
+    ...mapActions(['increment', 'decrement'])
+  }
+})
 export default class Counter extends Vue {
-  value = 1;
-  increment() {
-    this.value++;
-  }
-  decrement() {
-    this.value--;
-  }
+  // value = 1;
+  // increment() {
+  //   this.value++;
+  // }
+  // decrement() {
+  //   this.value--;
+  // }
 }
 </script>
 
