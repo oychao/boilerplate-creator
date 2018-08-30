@@ -1,8 +1,8 @@
 export interface IAppStateToProps {
-    count: number;
+  count: number;
 }
 export interface IAppDispatchToProps {
-    handleCount: (num: number) => void;
+  handleCount: (num: number) => void;
 }
 export interface IAppProps extends IAppStateToProps, IAppDispatchToProps {}
 export interface IAppReduxState extends Partial<IAppStateToProps> {}

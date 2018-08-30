@@ -8,8 +8,8 @@ import App from './src/components/App';
 import './less';
 
 ReactDOM.render(
-    <Provider store={store}>
-        <App.view />
-    </Provider>,
-    document.querySelector('#app')
+  <Provider store={store}>
+    <App.view />
+  </Provider>,
+  document.querySelector('#app')
 );
