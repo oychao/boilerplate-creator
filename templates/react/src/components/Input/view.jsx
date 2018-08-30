@@ -18,7 +18,7 @@ class Input extends React.PureComponent {
     const { text } = this.props;
     return (
       <div>
-        <input type="text" onInput={this.handleInput} />
+        <input type="text" onInput={this.handleInput} value={text} />
         <h4>{text}</h4>
       </div>
     );

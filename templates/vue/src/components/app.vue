@@ -1,10 +1,11 @@
 <template>
-  <div class="example">
+  <div class="app">
+    <h1>Vue</h1>
     <p>
-      <router-link to="/demo-counter">demo-counter</router-link>
-      <router-link to="/demo-model">demo-model</router-link>
-      <router-link to="/demo-alive">demo-alive</router-link>
+      <router-link to="/counter">counter</router-link>
+      <router-link to="/field">field</router-link>
     </p>
+    <hr>
     <keep-alive>
       <router-view />
     </keep-alive>

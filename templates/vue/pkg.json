@@ -1,9 +1,9 @@
 {
-  "name": "vue-demo",
+  "name": "test",
   "version": "1.0.0",
   "main": "index.js",
   "author": "Your name <your@email.address>",
-  "license": "WTFPL",
+  "license": "MIT",
   "repository": "your/github/repository",
   "description": "vue",
   "scripts": {
@@ -59,6 +59,7 @@
   "dependencies": {
     "vue": "^2.5.17",
     "vue-router": "^3.0.1",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "vuex-router-sync": "^5.0.0"
   }
 }
