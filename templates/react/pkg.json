@@ -1,5 +1,5 @@
 {
-  "name": "cli-demo",
+  "name": "react-demo",
   "version": "1.0.0",
   "main": "index.js",
   "author": {
@@ -39,7 +39,7 @@
     "@babel/polyfill": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/register": "^7.0.0",
-    "babel-eslint": "^8.2.6",
+    "babel-eslint": "^9.0.0",
     "babel-loader": "^8.0.0",
     "babel-plugin-react": "^1.0.0",
     "clean-webpack-plugin": "^0.1.19",
@@ -56,14 +56,15 @@
     "power-assert": "^1.6.0",
     "react-hot-loader": "^4.3.5",
     "script-ext-html-webpack-plugin": "^2.0.1",
-    "style-loader": "^0.22.1",
+    "style-loader": "^0.23.0",
     "svg-inline-loader": "^0.8.0",
     "url-loader": "^1.1.1",
     "webpack": "^4.17.1",
     "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.1.5"
+    "webpack-dev-server": "^3.1.7"
   },
   "dependencies": {
+    "core-js": "^2.5.7",
     "immer": "^1.5.0",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",

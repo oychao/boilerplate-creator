@@ -8,6 +8,11 @@ const store = new Vuex.Store({
     count: 0,
     content: ''
   },
+  getters: {
+    count: ({ count }) => {
+      return count;
+    }
+  },
   mutations: {
     increment(state) {
       state.count++;
@@ -17,6 +22,14 @@ const store = new Vuex.Store({
     },
     setContent(state, payload) {
       state.content = payload.content;
+    }
+  },
+  actions: {
+    increment({ commit }) {
+      commit('increment');
+    },
+    decrement({ commit }) {
+      commit('decrement');
     }
   }
 });
