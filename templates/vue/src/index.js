@@ -10,15 +10,13 @@ import app from './components/app.vue';
 
 Vue.use(VueAxios, axios);
 
-console.log(Vue.axios === axios);
-
 const unsync = sync(store, router);
 
 const vm = new Vue({
   components: {
     app
   },
-  el: '#root',
+  el: '#app',
   template: '<app />',
   router,
   store
