@@ -5,10 +5,9 @@ import { ConnectedRouter } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
 
 import store from './src/store';
-
 import App from './src/components/App';
 
-import './style.less';
+import './index.less';
 
 ReactDOM.render(
   <Provider store={store}>

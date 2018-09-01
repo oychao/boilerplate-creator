@@ -4,7 +4,7 @@ import { HashRouter, Route, Redirect, Link } from 'react-router-dom';
 import { hot } from 'react-hot-loader';
 
 import Counter from '../Counter';
-import Input from '../Input';
+import Field from '../Field';
 
 import './style.less';
 
@@ -24,13 +24,13 @@ class App extends React.Component {
                 <Link to="/counter">Counter</Link>
               </li>
               <li>
-                <Link to="/input">Input</Link>
+                <Link to="/field">Field</Link>
               </li>
             </ul>
             <hr />
             <Route exact path="/" render={() => <Redirect to="/counter" />} />
             <Route exact path="/counter" component={Counter.view} />
-            <Route exact path="/input" component={Input.view} />
+            <Route exact path="/field" component={Field.view} />
           </div>
         </HashRouter>
       </div>

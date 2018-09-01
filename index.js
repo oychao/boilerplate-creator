@@ -57,7 +57,7 @@ if (program.ts && program.template.slice(-3, 0) !== '-ts') {
   program.template += '-ts';
 }
 
-// error if ileegal template name
+// error if illegal template name
 if (legalTemps.indexOf(program.template) === -1) {
   shell.echo(
     `${chalk.red('Error:')} illegal template '${chalk.red(program.template)}'`

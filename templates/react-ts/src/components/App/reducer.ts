@@ -6,15 +6,17 @@ import * as actionTypes from './actionTypes';
 
 export default (
   state: IAppReduxState = {
-    count: 0
+    count: 0,
+    text: ''
   },
-  action: IAction
+  { type, payload }: IAction
 ) => {
-  const { type, payload } = action;
-  return produce(state, draft => {
+  return produce(state, (draft: any) => {
     switch (type) {
       case actionTypes.ADD:
         draft.count += payload.num;
+      case actionTypes.INPUT:
+        draft.text = payload.text;
       default:
     }
     return draft;

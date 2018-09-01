@@ -10,7 +10,6 @@ export default (
   { type, payload }
 ) => {
   return produce(state, draft => {
-    console.log(draft.text);
     switch (type) {
     case actionTypes.ADD:
       draft.count += payload.num;

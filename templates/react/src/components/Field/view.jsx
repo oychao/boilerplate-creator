@@ -4,7 +4,7 @@ import { hot } from 'react-hot-loader';
 
 import App from '../App';
 
-class Input extends React.PureComponent {
+class Field extends React.PureComponent {
   constructor(props) {
     super(props);
     this.handleInput = this.handleInput.bind(this);
@@ -36,5 +36,5 @@ export default hot(module)(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(Input)
+  )(Field)
 );

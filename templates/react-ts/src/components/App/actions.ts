@@ -7,3 +7,10 @@ export const add = (num: number): IAction => ({
     num
   }
 });
+
+export const input = (text: string): IAction => ({
+  type: actionTypes.INPUT,
+  payload: {
+    text
+  }
+});
