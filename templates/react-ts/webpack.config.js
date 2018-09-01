@@ -33,10 +33,6 @@ const config = {
       {
         test: /\.(css|less)$/,
         use: ['style-loader', 'css-loader', 'less-loader']
-      },
-      {
-        test: /\.svg$/,
-        use: ['svg-inline-loader']
       }
     ]
   },
@@ -46,8 +42,8 @@ const config = {
     open: true
   },
   externals: {
-    react: 'React',
-    'react-dom': 'ReactDOM'
+    // react: 'React',
+    // 'react-dom': 'ReactDOM'
   },
   plugins: [
     new CleanWebpackPlugin(path.resolve(__dirname, 'dist')),

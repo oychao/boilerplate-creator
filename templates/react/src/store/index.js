@@ -3,7 +3,6 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 
 import App from '../components/App';
-import { create } from 'domain';
 
 const history = createBrowserHistory();
 
