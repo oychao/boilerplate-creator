@@ -4,14 +4,19 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ScriptExtHtmlWebpackPlugin from 'script-ext-html-webpack-plugin';
 import CleanWebpackPlugin from 'clean-webpack-plugin';
 import VueLoader from 'vue-loader';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
+import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
+// base config
 const config = {
   mode: process.env.NODE_ENV,
   entry: ['./index.js'],
   output: {
-    publicPath: '/',
+    filename: 'js/[name].[chunkhash:8].js',
     path: path.resolve('dist'),
-    filename: 'bundle.js'
+    publicPath: '/'
   },
   resolve: {
     modules: [path.resolve('./src'), path.resolve('./node_modules')],
@@ -24,16 +29,37 @@ const config = {
     rules: [
       {
         test: /\.(css|less)$/,
-        use: ['vue-style-loader', 'css-loader', 'less-loader']
+        use: [
+          {
+            loader:
+              process.env.NODE_ENV === 'development'
+                ? 'style-loader'
+                : MiniCssExtractPlugin.loader
+          },
+          {
+            loader: 'css-loader'
+          },
+          {
+            loader: 'less-loader'
+          }
+        ]
       },
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: ['babel-loader']
+        use: [
+          {
+            loader: 'babel-loader'
+          }
+        ]
       },
       {
         test: /\.vue$/,
-        use: ['vue-loader']
+        use: [
+          {
+            loader: 'vue-loader'
+          }
+        ]
       }
     ]
   },
@@ -53,24 +79,54 @@ const config = {
     new ScriptExtHtmlWebpackPlugin({
       defaultAttribute: 'defer'
     }),
-    new webpack.NamedModulesPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
     new VueLoader.VueLoaderPlugin()
   ]
 };
 
-if(process.env.NODE_ENV === 'production') {
-  config.mode = 'production';
+// development config
+if (process.env.NODE_ENV === 'development') {
+  config.output.filename = 'js/[name].[hash:8].js';
+  config.plugins.push(new webpack.HotModuleReplacementPlugin());
+  config.optimization = {
+    minimize: false
+  };
+}
+
+// production config
+if (process.env.NODE_ENV === 'production') {
   config.devtool = 'source-map';
-  [new webpack.optimize.UglifyJsPlugin({
-    sourceMap: true,
-    compress: {
-      warnings: false
+  [
+    new webpack.LoaderOptionsPlugin({
+      minimize: true
+    }),
+    new MiniCssExtractPlugin({
+      debug: false,
+      filename: 'css/[name].[contenthash:8].css',
+      chunkFilename: 'css/[name].[contenthash:8].css'
+    }),
+    new OptimizeCSSAssetsPlugin({})
+  ].forEach(plugin => config.plugins.push(plugin));
+  config.optimization = {
+    minimize: true,
+    minimizer: [
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: false
+      })
+    ],
+    splitChunks: {
+      chunks: 'all'
     }
-  }),
-  new webpack.LoaderOptionsPlugin({
-    minimize: true
-  })].forEach(plugin => void (config.plugins.push(plugin)));
+  };
+  config.performance = {
+    hints: false
+  };
+}
+
+// debug
+if (process.env.WEBPACK_DEBUG) {
+  config.plugins.push(new BundleAnalyzerPlugin());
 }
 
 export default config;
