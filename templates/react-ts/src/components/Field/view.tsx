@@ -22,7 +22,7 @@ class Field extends React.PureComponent<any, any> {
     const { text } = this.props;
     return (
       <div>
-        <input type="text" onInput={this.handleInput} value={text} />
+        <input type="text" onInput={this.handleInput} defaultValue={text} />
         <h4>{text}</h4>
       </div>
     );
