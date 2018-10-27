@@ -6,7 +6,7 @@ export default {
   input: './src/index.ts',
   output: [
     {
-      file: 'bin/bundle.js',
+      file: 'bin/index.js',
       format: 'cjs'
     }
   ],
