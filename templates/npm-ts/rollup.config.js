@@ -4,10 +4,16 @@ export default {
   input: './src/index.ts',
   output: [
     {
-      file: 'bin/bundle.js',
-      format: 'umd'
+      file: 'bin/index.js',
+      format: 'cjs'
     }
   ],
-  plugins: [typescript()],
+  plugins: [
+    typescript({
+      tsconfigOverride: {
+        compilerOptions: { declaration: true }
+      }
+    })
+  ],
   external: ['fs', 'path', 'jsonfile']
 };
