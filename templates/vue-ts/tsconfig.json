@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "module": "es2015",
+    "moduleResolution": "node",
+    "target": "es6",
+    "baseUrl": ".",
+    "experimentalDecorators": true,
+    "paths": {
+      "comps/*": ["src/components/*"]
+    }
+  },
+  "include": ["./src/**/*"]
+}

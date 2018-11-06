@@ -1,16 +1,19 @@
 {
-    "compilerOptions": {
-        "outDir": "./dist/",
-        "sourceMap": true,
-        "noImplicitAny": true,
-        "module": "commonjs",
-        "target": "es6",
-        "jsx": "react",
-        "baseUrl": ".",
-        "paths": {
-            "comps/*": ["src/components/*"],
-            "store/*": ["src/store/*"]
-        }
+  "compilerOptions": {
+    "baseUrl": ".",
+    "declaration": true,
+    "jsx": "react",
+    "lib": ["dom", "es6", "es2017"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noImplicitAny": false,
+    "outDir": "./dist/",
+    "paths": {
+      "comps/*": ["src/components/*"],
+      "store/*": ["src/store/*"]
     },
-    "include": ["./src/**/*"]
+    "sourceMap": true,
+    "target": "es6"
+  },
+  "include": ["./src/**/*", "../bin/**/*"]
 }

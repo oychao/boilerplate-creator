@@ -3,18 +3,22 @@ import produce from 'immer';
 import * as actionTypes from './actionTypes';
 
 export default (
-    state = {
-        count: 0,
-    },
-    action
+  state = {
+    count: 0,
+    text: ''
+  },
+  { type, payload }
 ) => {
-    const { type, payload, } = action;
-    return produce(state, draft => {
-        switch (type) {
-        case actionTypes.ADD:
-            draft.count += payload.num;
-        default:
-        }
-        return draft;
-    });
+  return produce(state, draft => {
+    switch (type) {
+    case actionTypes.ADD:
+      draft.count += payload.num;
+      break;
+    case actionTypes.INPUT:
+      draft.text = payload.text;
+      break;
+    default:
+    }
+    return draft;
+  });
 };

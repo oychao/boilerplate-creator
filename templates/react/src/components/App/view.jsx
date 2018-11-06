@@ -1,54 +1,41 @@
 import React from 'react';
-import { connect, } from 'react-redux';
-import { hot, } from 'react-hot-loader';
+import { connect } from 'react-redux';
+import { HashRouter, Route, Redirect, Link } from 'react-router-dom';
+import { hot } from 'react-hot-loader';
 
-import * as actions from './actions';
+import Counter from '../Counter';
+import Field from '../Field';
 
-import logo from './logo.svg';
 import './style.less';
 
 class App extends React.Component {
-    constructor(props) {
-        super(props);
-        this.handleCount = this.handleCount.bind(this);
-    }
+  constructor(props) {
+    super(props);
+  }
 
-    handleCount() {
-        this.props.handleCount(1);
-    }
-
-    render() {
-        const { count, } = this.props;
-        return (
-            <div className="App">
-                <header className="App-header">
-                    <div
-                        dangerouslySetInnerHTML={{ __html: logo, }}
-                        className="App-logo"
-                    />
-                    <h1 className="App-title">Welcome to React</h1>
-                </header>
-                <p className="App-intro">
-                    To get started, edit{' '}
-                    <code>src/components/App/view.jsx</code> and save to reload.
-                </p>
-                <div>
-                    <h2>{count}</h2>
-                    <button onClick={this.handleCount}>Click me!</button>
-                </div>
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div className="app">
+        <h1>React</h1>
+        <HashRouter>
+          <div>
+            <ul className="app__router">
+              <li>
+                <Link to="/counter">Counter</Link>
+              </li>
+              <li>
+                <Link to="/field">Field</Link>
+              </li>
+            </ul>
+            <hr />
+            <Route exact path="/" render={() => <Redirect to="/counter" />} />
+            <Route exact path="/counter" component={Counter.view} />
+            <Route exact path="/field" component={Field.view} />
+          </div>
+        </HashRouter>
+      </div>
+    );
+  }
 }
 
-// I don't think PropTypes is a good idea for type checks,
-// if you really need it, use flow or typescript instead
-
-const mapStateToProps = (state, props) => ({
-    count: state.count,
-});
-const mapDispatchToProps = (dispatch, props) => ({
-    handleCount: num => dispatch(actions.add(num)),
-});
-
-export default hot(module)(connect(mapStateToProps, mapDispatchToProps)(App));
+export default hot(module)(App);

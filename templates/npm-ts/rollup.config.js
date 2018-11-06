@@ -1,15 +1,19 @@
 import typescript from 'rollup-plugin-typescript2';
 
-export default [
+export default {
+  input: './src/index.ts',
+  output: [
     {
-        input: './src/index.ts',
-        output: [
-            {
-                file: 'dist/bundle.js',
-                format: 'cjs',
-            },
-        ],
-        plugins: [typescript(),],
-        external: ['fs', 'path', 'jsonfile',],
-    },
-];
+      file: 'bin/index.js',
+      format: 'cjs'
+    }
+  ],
+  plugins: [
+    typescript({
+      tsconfigOverride: {
+        compilerOptions: { declaration: true }
+      }
+    })
+  ],
+  external: ['fs', 'path', 'jsonfile']
+};

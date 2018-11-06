@@ -4,8 +4,8 @@ import * as actions from './actions';
 import reducer from './reducer';
 
 export default {
-    view,
-    actionTypes,
-    actions,
-    reducer,
+  view,
+  actionTypes,
+  actions,
+  reducer
 };
