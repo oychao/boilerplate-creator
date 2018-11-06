@@ -1,37 +1,18 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
+import state from './state';
+import getters from './getters';
+import mutations from './mutations';
+import actions from './actions';
+
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
-  state: {
-    count: 0,
-    content: ''
-  },
-  getters: {
-    count: ({ count }) => {
-      return count;
-    }
-  },
-  mutations: {
-    increment(state) {
-      state.count++;
-    },
-    decrement(state) {
-      state.count--;
-    },
-    setContent(state, payload) {
-      state.content = payload.content;
-    }
-  },
-  actions: {
-    increment({ commit }) {
-      commit('increment');
-    },
-    decrement({ commit }) {
-      commit('decrement');
-    }
-  }
+  state,
+  getters,
+  mutations,
+  actions
 });
 
 export default store;
