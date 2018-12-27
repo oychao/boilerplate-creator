@@ -15,8 +15,10 @@ export default (
     switch (type) {
       case actionTypes.ADD:
         draft.count += payload.num;
+        break;
       case actionTypes.INPUT:
         draft.text = payload.text;
+        break;
       default:
     }
     return draft;
