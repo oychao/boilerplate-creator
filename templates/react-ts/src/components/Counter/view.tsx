@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import App from 'comps/App';
 import * as AppTypes from 'comps/App/type';
 
-class Counter extends React.PureComponent<any, any> {
+export class Counter extends React.PureComponent<any, any> {
   public static defaultProps: Partial<any> = {
     count: 0
   };
@@ -30,9 +30,9 @@ class Counter extends React.PureComponent<any, any> {
 }
 
 const mapStateToProps = (
-  state: AppTypes.IAppStateToProps,
+  state: AppTypes.IReduxState,
   props: object
-): AppTypes.IAppStateToProps => state;
+): AppTypes.IAppStateToProps => state.app;
 const mapDispatchToProps = (
   dispatch: any,
   props: object
