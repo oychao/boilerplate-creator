@@ -26,7 +26,7 @@ class Field extends React.PureComponent {
 }
 
 const mapStateToProps = (state, props) => ({
-  text: state.text
+  text: state.app.text
 });
 const mapDispatchToProps = (dispatch, props) => ({
   handleInput: text => dispatch(App.actions.input(text))
