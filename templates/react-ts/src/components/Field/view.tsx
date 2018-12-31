@@ -30,9 +30,9 @@ class Field extends React.PureComponent<any, any> {
 }
 
 const mapStateToProps = (
-  state: AppTypes.IAppStateToProps,
+  state: AppTypes.IReduxState,
   props: object
-): AppTypes.IAppStateToProps => state;
+): AppTypes.IAppStateToProps => state.app;
 const mapDispatchToProps = (
   dispatch: any,
   props: object

@@ -26,7 +26,7 @@ class Counter extends React.PureComponent {
 }
 
 const mapStateToProps = (state, props) => ({
-  count: state.count
+  count: state.app.count
 });
 const mapDispatchToProps = (dispatch, props) => ({
   handleCount: num => dispatch(App.actions.add(num))
