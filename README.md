@@ -36,6 +36,14 @@ $ # react in typescript
 $ bpc helloreactts -t react --ts
 ```
 
+### Create a Riact project
+
+```bash
+$ bpc helloriact -t riact
+$ # riact in typescript
+$ bpc helloriactts -t riact --ts
+```
+
 ### Create a Vue project
 
 ```bash

@@ -8,13 +8,17 @@ import ora from 'ora';
 
 import utils from './src/utils';
 import done from './src/done';
-import { version as VERSION } from './package.json';
+import {
+  version as VERSION
+} from './package.json';
 
-const { spinnerEcho } = utils;
+const {
+  spinnerEcho
+} = utils;
 const TEMPLATE_DIR = path.join(__dirname, '..', 'templates');
 const BPC_NAME = chalk.bold.blue(`boilerplate-creator ${VERSION}`);
 const npmTemps = ['npm', 'npm-ts', 'cli', 'cli-ts'];
-const legalTemps = npmTemps.concat(['react', 'react-ts', 'vue', 'vue-ts']);
+const legalTemps = npmTemps.concat(['react', 'react-ts', 'vue', 'vue-ts', 'riact', 'riact-ts']);
 const legalTempsHintStr = legalTemps
   .reduce((acc, temp) => `${acc}|${chalk.yellow(temp)}`, '')
   .slice(1);
@@ -129,7 +133,9 @@ jsonfile
         )
       );
 
-      shell.exec('npm install', { silent: true }, () => {
+      shell.exec('npm install', {
+        silent: true
+      }, () => {
         // done
         spinner.succeed();
         done(spinner, projectName, isApp, true, start);
