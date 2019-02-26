@@ -30,8 +30,7 @@
   "files": [
     "LICENSE.md",
     "README.md",
-    "bin/",
-    "templates/"
+    "bin/"
   ],
   "devDependencies": {
     "babel-eslint": "^8.2.6",
