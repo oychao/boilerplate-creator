@@ -58,7 +58,7 @@ $ bpc hellovuets -t vue --ts
 $ bpc hellonpm -t npm
 $ bpc hellonpm -t npm --ts
 $ bpc hellocli -t cli
-$ bpc hellocli -t cli --ts
+# cli project in typescript not supported
 ```
 
 ### Get Help document
