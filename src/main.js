@@ -11,9 +11,9 @@ import {
 } from '../package.json';
 
 // init global constants and variables
-let projectName;
 let isApp;
 let templateSource;
+const regexGithubAddr = /^(https:\/\/github.com\/[a-zA-Z\d-]+\/[a-zA-Z\d-]+(\.git)?)$/;
 const BPC_NAME = chalk.bold.blue(`boilerplate-creator ${VERSION}`);
 const npmTemps = ['npm', 'npm-ts', 'cli'];
 const legalTemps = npmTemps.concat(['react', 'react-ts', 'vue', 'vue-ts', 'riact', 'riact-ts']);
@@ -106,15 +106,19 @@ const initProgram = async function () {
   // build a program
   program
     .name(chalk.green('bpc'))
-    .usage(chalk.green('[project name] [options]'))
     .description(`${BPC_NAME}: create a boilerplate quickly`)
+    .option(
+      '-c, --config <source>',
+      `set custom source, e.g. ${chalk.yellow('https://github.com/oychao/boilerplate-creator')}`
+    )
+    .option('-i, --init <project name>', 'initialized a named project')
     .option(
       '-t, --template [temp]',
       `which template to use, [temp] support(${legalTempsHintStr})`,
       'react'
     )
     .option('-f, --force', 'force on non-empty directory')
-    .option('-i, --install', 'install dependencies automatically')
+    .option('-a, --auto', 'automatically install dependencies')
     .option(
       '    --ts',
       'use typescript, \'bpc demo -t react-ts\' is equivalent to \'bpc demo -t react --ts\''
@@ -137,17 +141,6 @@ const initProgram = async function () {
     shell.exit(1);
   }
 
-  // get destination name
-  try {
-    projectName = program.args.shift().replace(/\//g, '');
-  } catch (e) {
-    // output help document if no project name is given
-    shell.echo();
-    shell.echo(chalk.red('  Illegal Usage!'));
-    program.outputHelp();
-    shell.exit(1);
-  }
-
   // check if the project is an app or a npm package
   isApp = npmTemps.indexOf(program.template) === -1;
 };
@@ -161,8 +154,23 @@ const main = async function () {
   shell.echo();
   shell.echo(BPC_NAME);
 
+  if (program.config) {
+    if (regexGithubAddr.test(program.config)) {
+      await jsonfile.write('config.json', {
+        source: program.config
+      });
+    } else {
+      shell.echo();
+      shell.echo(chalk.red('  error: option `-c, --config <source>` argument should be a github repository address'));
+      shell.echo();
+    }
+    return;
+  }
+
   // check if target folder or file exists
+  const projectName = program.init
   if (!program.force && fExists(projectName)) {
+
     shell.echo();
     if (
       !confirm(
