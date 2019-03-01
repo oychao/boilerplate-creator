@@ -12,18 +12,24 @@ import {
 // init global constants and variables
 let projectName;
 let isApp;
+let templateSource;
 const BPC_NAME = chalk.bold.blue(`boilerplate-creator ${VERSION}`);
 const npmTemps = ['npm', 'npm-ts', 'cli'];
 const legalTemps = npmTemps.concat(['react', 'react-ts', 'vue', 'vue-ts', 'riact', 'riact-ts']);
 const legalTempsHintStr = legalTemps
   .reduce((acc, temp) => `${acc}|${chalk.yellow(temp)}`, '')
   .slice(1);
-const silent = { silent: true };
+const silent = {
+  silent: true
+};
 
 // utils tool functions
 const execAsync = async function (directive, config) {
-  return new Promise(function(resolve, reject) {
-    shell.exec(directive, { ...silent, ...config }, () => {
+  return new Promise(function (resolve, reject) {
+    shell.exec(directive, {
+      ...silent,
+      ...config
+    }, () => {
       resolve();
     });
   });
@@ -52,16 +58,20 @@ const fExists = target => {
 };
 const done = async function (spinner, projectName, isApp, isAutoInstall, startTime) {
   // done
-  shell.exec('rm -rf templates', { async: true });
-  shell.exec('rm -rf .git', { async: true });
+  shell.exec('rm -rf templates', {
+    async: true
+  });
+  shell.exec('rm -rf .git', {
+    async: true
+  });
 
   spinner.text = chalk.magentaBright('dependencies installed.');
   spinner.succeed();
   spinnerEcho(
     chalk.magentaBright(
-      isApp
-        ? 'get started with following commands: '
-        : 'edit your code and build the project: '
+      isApp ?
+      'get started with following commands: ' :
+      'edit your code and build the project: '
     ),
     'info'
   );
@@ -73,9 +83,9 @@ const done = async function (spinner, projectName, isApp, isAutoInstall, startTi
     shell.echo(`   ${chalk.yellow('$')} ${chalk.blueBright('npm install')}`);
   }
   shell.echo(
-    isApp
-      ? `   ${chalk.yellow('$')} ${chalk.blueBright('npm start')}`
-      : `   ${chalk.yellow('$')} ${chalk.blueBright('npm run watch')}`
+    isApp ?
+    `   ${chalk.yellow('$')} ${chalk.blueBright('npm start')}` :
+    `   ${chalk.yellow('$')} ${chalk.blueBright('npm run watch')}`
   );
   shell.echo(`   ${chalk.yellow('$')} # do something`);
   spinnerEcho(
@@ -106,7 +116,7 @@ const initProgram = async function () {
       '    --ts',
       'use typescript, \'bpc demo -t react-ts\' is equivalent to \'bpc demo -t react --ts\''
     )
-  // .option('-b, --branch [branch]', 'which branch to pull code from', 'master')
+    // .option('-b, --branch [branch]', 'which branch to pull code from', 'master')
     .version(VERSION, '-v, --version')
     .parse(process.argv);
 
@@ -144,7 +154,7 @@ const main = async function () {
 
   let spinner;
   const start = new Date().getTime();
-  
+
   shell.echo();
   shell.echo(BPC_NAME);
 
@@ -169,7 +179,7 @@ const main = async function () {
   await execAsync('git init');
   await execAsync('git remote add origin https://github.com/oychao/boilerplate-creator');
   await execAsync('git config core.sparseCheckout true');
-  await execAsync(`echo "templates/${program.template}" >> .git/info/sparse-checkout`);
+  await execAsync(`echo templates/${program.template} >> .git/info/sparse-checkout`);
   await execAsync('git pull --depth=1 origin master');
   await execAsync(`mv templates/${program.template}/* .`);
   await execAsync(`mv templates/${program.template}/.* .`);
