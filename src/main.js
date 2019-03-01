@@ -4,6 +4,7 @@ import program from 'commander';
 import shell from 'shelljs';
 import ora from 'ora';
 import readline from 'readline-sync';
+import jsonfile from 'promise-jsonfile';
 
 import {
   version as VERSION
@@ -100,6 +101,8 @@ const done = async function (spinner, projectName, isApp, isAutoInstall, startTi
 
 
 const initProgram = async function () {
+  // get template source
+  templateSource = (await jsonfile.read('config.json')).source;
   // build a program
   program
     .name(chalk.green('bpc'))
@@ -177,7 +180,7 @@ const main = async function () {
   await execAsync(`mkdir ${projectName}`);
   shell.cd(projectName);
   await execAsync('git init');
-  await execAsync('git remote add origin https://github.com/oychao/boilerplate-creator');
+  await execAsync(`git remote add origin ${templateSource}`);
   await execAsync('git config core.sparseCheckout true');
   await execAsync(`echo templates/${program.template} >> .git/info/sparse-checkout`);
   await execAsync('git pull --depth=1 origin master');
