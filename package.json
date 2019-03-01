@@ -32,8 +32,9 @@
     "bin/"
   ],
   "devDependencies": {
+    "acorn": "^6.1.1",
     "babel-eslint": "^8.2.6",
-    "eslint": "^5.3.0",
+    "eslint": "^5.14.1",
     "intelli-espower-loader": "^1.0.1",
     "mocha": "^5.2.0",
     "power-assert": "^1.6.0",
