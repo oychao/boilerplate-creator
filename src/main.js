@@ -1,10 +1,15 @@
 import fs from 'fs';
+import path from 'path';
 import chalk from 'chalk';
 import program from 'commander';
 import shell from 'shelljs';
 import ora from 'ora';
 import readline from 'readline-sync';
 import jsonfile from 'promise-jsonfile';
+import fsex from 'fs-extra';
+
+// // TODO 1: fix bugs on Windows, use fs to remove folder
+// TODO 2: update README
 
 import {
   version as VERSION
@@ -13,6 +18,7 @@ import {
 // init global constants and variables
 let isApp;
 let templateSource;
+const configFilePath = path.resolve(__dirname, '..', 'config.json');
 const regexGithubAddr = /^(https:\/\/github.com\/[a-zA-Z\d-]+\/[a-zA-Z\d-]+(\.git)?)$/;
 const BPC_NAME = chalk.bold.blue(`boilerplate-creator ${VERSION}`);
 const npmTemps = ['npm', 'npm-ts', 'cli'];
@@ -59,20 +65,16 @@ const fExists = target => {
 };
 const done = async function (spinner, projectName, isApp, isAutoInstall, startTime) {
   // done
-  shell.exec('rm -rf templates', {
-    async: true
-  });
-  shell.exec('rm -rf .git', {
-    async: true
-  });
+  await fsex.remove('templates');
+  await fsex.remove('.git');
 
   spinner.text = chalk.magentaBright('dependencies installed.');
   spinner.succeed();
   spinnerEcho(
     chalk.magentaBright(
       isApp ?
-      'get started with following commands: ' :
-      'edit your code and build the project: '
+        'get started with following commands: ' :
+        'edit your code and build the project: '
     ),
     'info'
   );
@@ -85,8 +87,8 @@ const done = async function (spinner, projectName, isApp, isAutoInstall, startTi
   }
   shell.echo(
     isApp ?
-    `   ${chalk.yellow('$')} ${chalk.blueBright('npm start')}` :
-    `   ${chalk.yellow('$')} ${chalk.blueBright('npm run watch')}`
+      `   ${chalk.yellow('$')} ${chalk.blueBright('npm start')}` :
+      `   ${chalk.yellow('$')} ${chalk.blueBright('npm run watch')}`
   );
   shell.echo(`   ${chalk.yellow('$')} # do something`);
   spinnerEcho(
@@ -102,16 +104,17 @@ const done = async function (spinner, projectName, isApp, isAutoInstall, startTi
 
 const initProgram = async function () {
   // get template source
-  templateSource = (await jsonfile.read('config.json')).source;
+  templateSource = (await jsonfile.read(configFilePath)).source;
   // build a program
   program
     .name(chalk.green('bpc'))
+    .usage('<options>')
     .description(`${BPC_NAME}: create a boilerplate quickly`)
     .option(
       '-c, --config <source>',
       `set custom source, e.g. ${chalk.yellow('https://github.com/oychao/boilerplate-creator')}`
     )
-    .option('-i, --init <project name>', 'initialized a named project')
+    .option('-i, --init [project name]', 'initialized a named project', 'helloworld')
     .option(
       '-t, --template [temp]',
       `which template to use, [temp] support(${legalTempsHintStr})`,
@@ -132,15 +135,6 @@ const initProgram = async function () {
     program.template += '-ts';
   }
 
-  // error if illegal template name
-  if (legalTemps.indexOf(program.template) === -1) {
-    shell.echo(
-      `${chalk.red('Error:')} illegal template '${chalk.red(program.template)}'`
-    );
-    shell.echo(`Support (${legalTempsHintStr}).`);
-    shell.exit(1);
-  }
-
   // check if the project is an app or a npm package
   isApp = npmTemps.indexOf(program.template) === -1;
 };
@@ -155,12 +149,13 @@ const main = async function () {
   shell.echo(BPC_NAME);
 
   if (program.config) {
+    shell.echo();
     if (regexGithubAddr.test(program.config)) {
-      await jsonfile.write('config.json', {
+      await jsonfile.write(configFilePath, {
         source: program.config
       });
+      shell.echo(chalk.green('  template source address updated'));
     } else {
-      shell.echo();
       shell.echo(chalk.red('  error: option `-c, --config <source>` argument should be a github repository address'));
       shell.echo();
     }
@@ -168,7 +163,7 @@ const main = async function () {
   }
 
   // check if target folder or file exists
-  const projectName = program.init
+  const projectName = program.init;
   if (!program.force && fExists(projectName)) {
 
     shell.echo();
@@ -184,7 +179,9 @@ const main = async function () {
   spinner = spinnerEcho(
     chalk.keyword('gold')('have a cup of tea while initializing project')
   );
-  await execAsync(`rm -rf ${projectName}`);
+  // windows, not working yet
+  await fsex.remove(projectName);
+  // await execAsync(`rm -rf ${projectName}`);
   await execAsync(`mkdir ${projectName}`);
   shell.cd(projectName);
   await execAsync('git init');
@@ -192,9 +189,8 @@ const main = async function () {
   await execAsync('git config core.sparseCheckout true');
   await execAsync(`echo templates/${program.template} >> .git/info/sparse-checkout`);
   await execAsync('git pull --depth=1 origin master');
-  await execAsync(`mv templates/${program.template}/* .`);
-  await execAsync(`mv templates/${program.template}/.* .`);
-  if (program.install) {
+  await fsex.copy(`templates/${program.template}/`, './');
+  if (program.auto) {
     spinner.text = chalk.magentaBright('project initialized.');
     spinner.succeed();
     spinner = spinnerEcho(chalk.keyword('gold')('installing dependencies'));

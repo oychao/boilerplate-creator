@@ -22,6 +22,7 @@ export default [{
     'ora',
     'promise-jsonfile',
     'readline-sync',
-    'shelljs'
+    'shelljs',
+    'fs-extra'
   ]
 }];
