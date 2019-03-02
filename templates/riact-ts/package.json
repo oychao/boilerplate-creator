@@ -41,6 +41,6 @@
     "webpack-dev-server": "^3.2.0"
   },
   "dependencies": {
-    "riact": "^0.0.1-beta.2"
+    "riact": "^0.0.3"
   }
 }

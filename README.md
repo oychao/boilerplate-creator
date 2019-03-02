@@ -19,46 +19,56 @@ $ npm i -g boilerplate-creator
 ### Demo
 
 <p align="center">
-    <img src="https://i.giphy.com/media/pcJnyMqp6HdJLSFGwx/giphy.webp" width=600 alt="demo">
+    <img src="./docs/install-react.png" width=600 alt="demo">
 </p>
 
-### Basic usage
+#### Basic usage
 
 ```bash
-$ bpc [project name] [options]
+$ bpc [options]
 ```
 
-### Create a React project
+#### Create a React project
 
 ```bash
-$ bpc helloreact -t react
+$ bpc -i helloreact -t react
 $ # react in typescript
-$ bpc helloreactts -t react --ts
+$ bpc -i helloreactts -t react --ts
 ```
 
-### Create a Riact project
+#### Create a Riact project
 
 ```bash
-$ bpc helloriact -t riact
+$ bpc -i helloriact -t riact
 $ # riact in typescript
-$ bpc helloriactts -t riact --ts
+$ bpc -i helloriactts -t riact --ts
 ```
 
-### Create a Vue project
+#### Create a Vue project
 
 ```bash
-$ bpc hellovue -t vue
+$ bpc -i hellovue -t vue
 $ # vue in typescript
-$ bpc hellovuets -t vue --ts
+$ bpc -i hellovuets -t vue --ts
 ```
 
-### Create a NPM package or a CLI tool
+#### Create a NPM package or a CLI tool
 
 ```bash
-$ bpc hellonpm -t npm
-$ bpc hellonpm -t npm --ts
-$ bpc hellocli -t cli
+$ bpc -i hellonpm -t npm
+$ bpc -i hellonpm -t npm --ts
+$ bpc -i hellocli -t cli
 # cli project in typescript not supported
+```
+
+### Custom Template Source
+
+boilerplate-creator basiclly just pull templates from GitHub, which means you can set your own template source as well. Note that only github reposities are supported and all templates must be put into a root fold named 'templates', just like this repository.
+
+```bash
+bpc -c https://github.com/your/repository
+# say you have a 'my-template' under the 'templates' folder, then just:
+bpc -i helloworld -t my-template
 ```
 
 ### Get Help document
