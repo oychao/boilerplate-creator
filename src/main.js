@@ -7,10 +7,6 @@ import ora from 'ora';
 import readline from 'readline-sync';
 import jsonfile from 'promise-jsonfile';
 import fsex from 'fs-extra';
-
-// // TODO 1: fix bugs on Windows, use fs to remove folder
-// TODO 2: update README
-
 import {
   version as VERSION
 } from '../package.json';
