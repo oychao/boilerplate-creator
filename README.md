@@ -71,9 +71,7 @@ bpc -c https://github.com/your/repository
 bpc -i helloworld -t my-template
 ```
 
-### Get Help document
-
-There are 8 templates(npm|npm-ts|cli|cli-ts|react|react-ts|vue|vue-ts) are supported for now, please check the help document for more information.
+There are 9 templates(npm|npm-ts|cli||react|react-ts|riact|riact-ts|vue|vue-ts) are supported for now, please check the help document for more information, see help document for more information.
 
 ```bash
 $ bpc --help
