@@ -65,6 +65,7 @@
     "webpack-dev-server": "^3.2.0"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "riact": "^0.0.3"
   }
 }
