@@ -7,11 +7,12 @@ import VueLoader from 'vue-loader';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
+import HappyPack from 'happypack';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 // base config
 const config = {
-  mode: process.env.NODE_ENV,
+  mode: process.env.NODE_ENV === 'dll' ? 'none' : process.env.NODE_ENV,
   entry: ['./index.js'],
   output: {
     filename: 'js/[name].[chunkhash:8].js',
@@ -32,9 +33,9 @@ const config = {
         use: [
           {
             loader:
-              process.env.NODE_ENV === 'development'
-                ? 'style-loader'
-                : MiniCssExtractPlugin.loader
+            process.env.NODE_ENV === 'development'
+              ? 'style-loader'
+              : MiniCssExtractPlugin.loader
           },
           {
             loader: 'css-loader'
@@ -49,7 +50,8 @@ const config = {
         exclude: /node_modules/,
         use: [
           {
-            loader: 'babel-loader'
+            // loader: 'babel-loader'
+            loader: 'happypack/loader'
           }
         ]
       },
@@ -72,16 +74,32 @@ const config = {
   },
   externals: {},
   plugins: [
-    new CleanWebpackPlugin(path.resolve(__dirname, 'dist')),
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: 'index.html'
     }),
     new ScriptExtHtmlWebpackPlugin({
       defaultAttribute: 'defer'
     }),
+    new HappyPack({
+      loaders: ['babel-loader']
+    }),
     new VueLoader.VueLoaderPlugin()
   ]
 };
+
+if (process.env.NODE_ENV === 'dll') {
+  config.plugins.push(new webpack.DllPlugin({
+    path: path.join(__dirname, '[name]-manifest.json'),
+    name: '[name]_[chunkhash]',
+    context: __dirname
+  }));
+} else {
+  config.plugins.push(new webpack.DllReferencePlugin({
+    context: __dirname,
+    manifest: require('./main-manifest.json')
+  }));
+}
 
 // development config
 if (process.env.NODE_ENV === 'development') {
