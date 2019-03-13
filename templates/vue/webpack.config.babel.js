@@ -53,8 +53,7 @@ const config = {
       use: [{
         loader: 'vue-loader'
       }]
-    }
-    ]
+    }]
   },
   devtool: 'eval-source-map',
   devServer: {
