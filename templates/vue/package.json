@@ -14,7 +14,8 @@
     "build": "cross-env NODE_ENV=production webpack",
     "build:dll": "cross-env NODE_ENV=dll webpack",
     "build:debug": "cross-env WEBPACK_DEBUG=true npm run build",
-    "start": "cross-env NODE_ENV=development webpack-dev-server",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server",
+    "start": "npm run build:dll && npm run dev",
     "lint": "eslint ./src --ext .js,.vue",
     "fix": "eslint ./src --ext .js,.vue --fix",
     "test": "mocha --require intelli-espower-loader test/**/*.spec.js"
