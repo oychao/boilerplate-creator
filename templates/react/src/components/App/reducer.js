@@ -6,8 +6,10 @@ export default (
   state = {
     count: 0,
     text: ''
-  },
-  { type, payload }
+  }, {
+    type,
+    payload
+  }
 ) => {
   return produce(state, draft => {
     switch (type) {

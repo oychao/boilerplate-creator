@@ -66,7 +66,12 @@ const config = {
 if (process.env.NODE_ENV === 'dll') {
   config.entry = {
     vendor: [
-      '@babel/polyfill'
+      '@babel/polyfill',
+      'axios',
+      'react',
+      'react-dom',
+      'react-redux',
+      'redux'
     ]
   };
   config.output = {
