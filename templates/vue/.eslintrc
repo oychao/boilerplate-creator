@@ -4,8 +4,16 @@
     "node": true,
     "es6": true
   },
-  "parser": "babel-eslint",
+  "parserOptions": {
+    "parser": "babel-eslint",
+    "ecmaVersion": 2017,
+    "sourceType": "module"
+  },
   "plugins": ["html", "react", "vue"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:vue/recommended"
+  ],
   "rules": {
     "strict": 1,
     "comma-dangle": [1, "never"],

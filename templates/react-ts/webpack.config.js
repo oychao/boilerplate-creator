@@ -8,7 +8,10 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const HappyPack = require('happypack');
+const {
+  BundleAnalyzerPlugin
+} = require('webpack-bundle-analyzer');
 
 // base config
 const config = {
@@ -26,21 +29,17 @@ const config = {
     plugins: [new TsConfigPathsPlugin()]
   },
   module: {
-    rules: [
-      {
-        test: /\.tsx?$/,
-        use: ['awesome-typescript-loader']
-      },
-      {
-        enforce: 'pre',
-        test: /\.js$/,
-        use: ['source-map-loader']
-      },
-      {
-        test: /\.(css|less)$/,
-        use: ['style-loader', 'css-loader', 'less-loader']
-      }
-    ]
+    rules: [{
+      test: /\.tsx?$/,
+      use: ['awesome-typescript-loader']
+    }, {
+      enforce: 'pre',
+      test: /\.js$/,
+      use: ['happypack/loader']
+    }, {
+      test: /\.(css|less)$/,
+      use: ['style-loader', 'css-loader', 'less-loader']
+    }]
   },
   devtool: 'source-map',
   devServer: {
@@ -52,13 +51,16 @@ const config = {
     // 'react-dom': 'ReactDOM'
   },
   plugins: [
-    new CleanWebpackPlugin(path.resolve(__dirname, 'dist')),
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: 'Hello World',
       template: path.resolve(__dirname, 'index.html')
     }),
     new ScriptExtHtmlWebpackPlugin({
       defaultAttribute: 'defer'
+    }),
+    new HappyPack({
+      loaders: ['source-map-loader']
     })
   ]
 };

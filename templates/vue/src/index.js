@@ -9,14 +9,15 @@ import app from './components/app.vue';
 
 Vue.use(VueAxios, axios);
 
-const unsync = sync(store, router);
+sync(store, router);
 
-const vm = new Vue({
+new Vue({
+  el: '#app',
   components: {
     app
   },
-  el: '#app',
   template: '<app />',
   router,
   store
 });
+
