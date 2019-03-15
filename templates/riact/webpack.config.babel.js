@@ -6,6 +6,7 @@ import CleanWebpackPlugin from 'clean-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
+import HappyPack from 'happypack';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 // base config
@@ -25,42 +26,29 @@ const config = {
     }
   },
   module: {
-    rules: [
-      {
-        test: /\.(css|less)$/,
-        use: [
-          {
-            loader:
-              process.env.NODE_ENV === 'development'
-                ? 'style-loader'
-                : MiniCssExtractPlugin.loader
-          },
-          {
-            loader: 'css-loader'
-          },
-          {
-            loader: 'less-loader'
-          }
-        ]
-      },
-      {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: 'babel-loader'
-          }
-        ]
-      },
-      {
-        test: /\.svg$/,
-        use: [
-          {
-            loader: 'svg-inline-loader'
-          }
-        ]
-      }
-    ]
+    rules: [{
+      test: /\.(css|less)$/,
+      use: [{
+        loader: process.env.NODE_ENV === 'development'
+          ? 'style-loader'
+          : MiniCssExtractPlugin.loader
+      }, {
+        loader: 'css-loader'
+      }, {
+        loader: 'less-loader'
+      }]
+    }, {
+      test: /\.jsx?$/,
+      exclude: /node_modules/,
+      use: [{
+        loader: 'happypack/loader'
+      }]
+    }, {
+      test: /\.svg$/,
+      use: [{
+        loader: 'svg-inline-loader'
+      }]
+    }]
   },
   devtool: 'eval-source-map',
   devServer: {
@@ -82,6 +70,9 @@ const config = {
     }),
     new ScriptExtHtmlWebpackPlugin({
       defaultAttribute: 'defer'
+    }),
+    new HappyPack({
+      loaders: ['babel-loader']
     })
   ]
 };
