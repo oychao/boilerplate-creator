@@ -12,8 +12,10 @@
   "description": "a riact demo",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack",
+    "build:dll": "cross-env NODE_ENV=dll webpack",
     "build:debug": "cross-env WEBPACK_DEBUG=true npm run build",
-    "start": "cross-env NODE_ENV=development webpack-dev-server",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server",
+    "start": "npm run build:dll && npm run dev",
     "lint": "eslint .",
     "fix": "eslint . --fix --ext .js,.jsx",
     "test": "mocha --require intelli-espower-loader test/**/*.spec.js"
@@ -37,7 +39,6 @@
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/plugin-syntax-import-meta": "^7.2.0",
     "@babel/plugin-transform-react-jsx": "^7.3.0",
-    "@babel/polyfill": "^7.2.5",
     "@babel/preset-env": "^7.3.1",
     "@babel/register": "^7.0.0",
     "babel-eslint": "^10.0.1",
@@ -65,6 +66,7 @@
     "webpack-dev-server": "^3.2.0"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.2.5",
     "axios": "^0.18.0",
     "riact": "^0.0.3"
   }

@@ -11,7 +11,7 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 // base config
 const config = {
-  mode: process.env.NODE_ENV,
+  mode: process.env.NODE_ENV === 'dll' ? 'none' : process.env.NODE_ENV,
   entry: ['@babel/polyfill', './index.jsx'],
   output: {
     filename: 'js/[name].[chunkhash:8].js',
@@ -57,14 +57,32 @@ const config = {
     open: true
     // progress: true
   },
-  externals: {
-    // react: 'React',
-    // 'react-dom': 'ReactDOM',
-    // redux: 'Redux',
-    // 'react-redux': 'ReactRedux'
-  },
-  plugins: [
-    new CleanWebpackPlugin(['dist']),
+  externals: {}
+};
+
+// build dll
+if (process.env.NODE_ENV === 'dll') {
+  config.entry = {
+    vendor: [
+      '@babel/polyfill',
+      'axios',
+      'riact'
+    ]
+  };
+  config.output = {
+    filename: 'js/[name].dll.js',
+    path: path.resolve('dll'),
+    library: '[name]_lib'
+  };
+  config.plugins = [
+    new webpack.DllPlugin({
+      path: path.join(__dirname, 'dll', '[name]-manifest.json'),
+      name: '[name]_lib'
+    })
+  ];
+} else {
+  config.plugins = [
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: 'index.html'
     }),
@@ -74,11 +92,17 @@ const config = {
     new HappyPack({
       loaders: ['babel-loader']
     })
-  ]
-};
+  ];
+}
 
 // development config
 if (process.env.NODE_ENV === 'development') {
+  config.plugins.push(
+    new webpack.DllReferencePlugin({
+      context: path.join(__dirname, 'dll'),
+      manifest: require('./dll/vendor-manifest.json')
+    })
+  );
   config.output.filename = 'js/[name].[hash:8].js';
   config.plugins.push(new webpack.HotModuleReplacementPlugin());
   config.optimization = {
@@ -88,7 +112,7 @@ if (process.env.NODE_ENV === 'development') {
 
 // production config
 if (process.env.NODE_ENV === 'production') {
-  config.devtool = 'source-map';
+  delete config.devtool;
   [
     new webpack.LoaderOptionsPlugin({
       minimize: true
