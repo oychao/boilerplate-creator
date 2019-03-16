@@ -68,6 +68,6 @@
   "dependencies": {
     "@babel/polyfill": "^7.2.5",
     "axios": "^0.18.0",
-    "riact": "^0.0.3"
+    "riact": "^0.0.4"
   }
 }
