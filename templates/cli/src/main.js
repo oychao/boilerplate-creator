@@ -1,3 +1,7 @@
-import sayHello from './src/main';
+import chalk from 'chalk';
 
-sayHello();
+const main = () => {
+  process.stdout.write(chalk.yellow('hello cli'));
+};
+
+export default main;

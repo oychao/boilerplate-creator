@@ -1,7 +1,3 @@
-import chalk from 'chalk';
-
-function main() {
-  console.log(chalk.yellow('hello cli'));
-}
+import main from './src/main';
 
 main();
