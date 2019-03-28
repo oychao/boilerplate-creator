@@ -1,3 +1,3 @@
-export default function(world: string): void {
-  console.log(`hello ${world}`);
-}
+export default function (world: string): string {
+  return `hello ${world}`;
+};

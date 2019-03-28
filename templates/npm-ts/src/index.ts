@@ -1,3 +1,3 @@
-import sayHello from './main';
+import main from './main';
 
-sayHello('world');
+export default main;

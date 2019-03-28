@@ -5,7 +5,8 @@ export default {
   output: [
     {
       file: 'bin/index.js',
-      format: 'cjs'
+      format: 'umd',
+      name: 'helloUmd'
     }
   ],
   plugins: [
