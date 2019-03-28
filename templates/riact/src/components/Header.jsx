@@ -4,7 +4,7 @@ import useLifeCycleChecker from '../hooks/useLifeCycleChecker';
 
 import ThemedButton from './ThemedButton';
 
-const Header = function({ toggleTheme }) {
+const Header = function ({ toggleTheme }) {
   useLifeCycleChecker('Header');
   return (
     <div>

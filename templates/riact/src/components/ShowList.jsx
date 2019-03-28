@@ -42,7 +42,7 @@ const lb = [
     email: 'c'
   }
 ];
-const Item = function({ children }) {
+const Item = function ({ children }) {
   useLifeCycleChecker('Item');
   return (
     <>
@@ -50,7 +50,7 @@ const Item = function({ children }) {
     </>
   );
 };
-const ShowList = function() {
+const ShowList = function () {
   useLifeCycleChecker('ShowList');
   const [list, setList] = useState(la);
   setTimeout(() => {

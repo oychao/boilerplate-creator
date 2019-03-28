@@ -22,7 +22,7 @@ const config = {
     modules: [path.resolve('./src'), path.resolve('./node_modules')],
     extensions: ['.js', '.json', '.jsx', '.css'],
     alias: {
-      'f': 'riact'
+      f: 'riact'
     }
   },
   module: {
@@ -66,6 +66,7 @@ if (process.env.NODE_ENV === 'dll') {
     vendor: [
       '@babel/polyfill',
       'axios',
+      'core-js',
       'riact'
     ]
   };
