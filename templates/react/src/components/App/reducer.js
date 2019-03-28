@@ -10,17 +10,15 @@ export default (
     type,
     payload
   }
-) => {
-  return produce(state, draft => {
-    switch (type) {
-    case actionTypes.ADD:
-      draft.count += payload.num;
-      break;
-    case actionTypes.INPUT:
-      draft.text = payload.text;
-      break;
-    default:
-    }
-    return draft;
-  });
-};
+) => produce(state, (draft) => {
+  switch (type) {
+  case actionTypes.ADD:
+    draft.count += payload.num;
+    break;
+  case actionTypes.INPUT:
+    draft.text = payload.text;
+    break;
+  default:
+  }
+  return draft;
+});

@@ -17,7 +17,9 @@ import App from '../components/App';
 const history = createBrowserHistory();
 
 // do not use this enhancer when in production environment
+/* eslint-disable */
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+/* eslint-enable */
 
 const store = createStore(
   combineReducers({
