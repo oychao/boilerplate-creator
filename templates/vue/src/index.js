@@ -20,4 +20,3 @@ new Vue({
   router,
   store
 });
-

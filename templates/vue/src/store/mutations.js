@@ -9,7 +9,7 @@ export default {
   [DECREMENT](state) {
     state.count--;
   },
-  [SET_CONTENT](state, payload) { 
+  [SET_CONTENT](state, payload) {
     state.content = payload.content;
   }
 };

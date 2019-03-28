@@ -13,6 +13,7 @@
 
 <script>
 import Vuex from 'vuex';
+
 export default {
   name: 'Counter',
   computed: {
