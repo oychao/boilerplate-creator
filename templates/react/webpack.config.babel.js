@@ -28,8 +28,8 @@ const config = {
     rules: [{
       test: /\.(css|less)$/,
       use: [{
-        loader: process.env.NODE_ENV === 'development' ?
-          'style-loader' : MiniCssExtractPlugin.loader
+        loader: process.env.NODE_ENV === 'development'
+          ? 'style-loader' : MiniCssExtractPlugin.loader
       }, {
         loader: 'css-loader'
       }, {

@@ -12,13 +12,18 @@
   "plugins": ["html", "react", "vue"],
   "extends": [
     "eslint:recommended",
-    "plugin:vue/recommended"
+    "plugin:vue/recommended",
+    "@vue/eslint-config-airbnb"
   ],
   "rules": {
     "strict": 1,
     "comma-dangle": [1, "never"],
     "semi": [2, "always"],
     "quotes": [2, "single"],
-    "indent": [2, 2]
+    "indent": [2, 2],
+    "global-require": 0,
+    "no-plusplus": 0,
+    "no-param-reassign": 0,
+    "no-new": 0
   }
 }

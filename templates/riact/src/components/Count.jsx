@@ -4,7 +4,7 @@ import useLifeCycleChecker from '../hooks/useLifeCycleChecker';
 
 import ThemedButton from './ThemedButton';
 
-const Count = function() {
+const Count = function () {
   useLifeCycleChecker('Count');
   const [num, setNum] = useState(2);
   return (

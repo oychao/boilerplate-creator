@@ -11,10 +11,16 @@
   "repository": "https://github.com/your/package/address",
   "keywords": [],
   "description": "a npm package",
-  "files": ["LICENSE.md", "README.md", "bin/"],
+  "files": [
+    "LICENSE.md",
+    "README.md",
+    "bin/"
+  ],
   "watch": {
     "build": {
-      "patterns": ["src"],
+      "patterns": [
+        "src"
+      ],
       "extensions": "ts"
     }
   },
@@ -35,7 +41,7 @@
     "mocha-sinon": "^2.1.0",
     "npm-watch": "^0.6.0",
     "rollup": "^1.2.2",
-    "rollup-plugin-typescript2": "^0.19.2",
+    "rollup-plugin-typescript2": "^0.20.1",
     "sinon": "^7.2.4",
     "typescript": "^3.3.3"
   },
