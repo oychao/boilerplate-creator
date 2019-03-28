@@ -5,7 +5,8 @@ export default {
   output: [
     {
       file: 'bin/bundle.js',
-      format: 'umd'
+      format: 'umd',
+      name: 'helloUmd'
     }
   ],
   plugins: [

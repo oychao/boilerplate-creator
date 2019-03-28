@@ -25,8 +25,8 @@
   },
   "scripts": {
     "build": "cross-env NODE_ENV=production rollup -c",
-    "lint": "eslint .",
-    "fix": "eslint . --fix --ext .js",
+    "lint": "eslint ./src",
+    "fix": "eslint ./src --fix --ext .js",
     "test": "cross-env NODE_ENV=test mocha --require @babel/register test/**/*.spec.js",
     "prepare": "npm run build",
     "watch": "npm-watch build"
@@ -55,14 +55,16 @@
     "babel-eslint": "^10.0.1",
     "chai": "^4.2.0",
     "cross-env": "^5.2.0",
-    "eslint": "^5.15.3",
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-react": "^7.12.4",
     "mocha": "^6.0.2",
     "mocha-sinon": "^2.1.0",
     "npm-watch": "^0.6.0",
-    "rollup": "^1.7.2",
+    "rollup": "^1.7.4",
     "rollup-plugin-babel": "^4.3.2",
-    "sinon": "^7.3.0"
+    "sinon": "^7.3.1"
   },
   "dependencies": {}
 }
