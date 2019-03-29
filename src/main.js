@@ -18,7 +18,7 @@ const configFilePath = path.resolve(__dirname, '..', 'config.json');
 const regexGithubAddr = /^(https:\/\/github.com\/[a-zA-Z\d-]+\/[a-zA-Z\d-]+(\.git)?)$/;
 const BPC_NAME = chalk.bold.blue(`boilerplate-creator ${VERSION}`);
 const npmTemps = ['npm', 'npm-ts', 'cli'];
-const legalTemps = npmTemps.concat(['react', 'react-ts', 'vue', 'vue-ts', 'riact', 'riact-ts']);
+const legalTemps = npmTemps.concat(['react', 'react-ts', 'vue', 'vue-ts']);
 const legalTempsHintStr = legalTemps
   .reduce((acc, temp) => `${acc}|${chalk.yellow(temp)}`, '')
   .slice(1);
