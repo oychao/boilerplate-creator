@@ -8,6 +8,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
 import HappyPack from 'happypack';
+import CompressionPlugin from 'compression-webpack-plugin';
 import {
   BundleAnalyzerPlugin
 } from 'webpack-bundle-analyzer';
@@ -113,6 +114,7 @@ if (process.env.NODE_ENV === 'development') {
     })
   );
   config.output.filename = 'js/[name].[hash:8].js';
+  config.devServer.compress = true;
   config.plugins.push(new webpack.HotModuleReplacementPlugin());
   config.optimization = {
     minimize: false
@@ -131,7 +133,10 @@ if (process.env.NODE_ENV === 'production') {
       filename: 'css/[name].[contenthash:8].css',
       chunkFilename: 'css/[name].[contenthash:8].css'
     }),
-    new OptimizeCSSAssetsPlugin({})
+    new OptimizeCSSAssetsPlugin({}),
+    new CompressionPlugin({
+      cache: true
+    })
   ].forEach(plugin => config.plugins.push(plugin));
   config.optimization = {
     minimize: true,
