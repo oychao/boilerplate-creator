@@ -12,7 +12,7 @@ import {
   routerMiddleware
 } from 'connected-react-router';
 
-import App from '../components/App';
+import global from './modules/global';
 
 const history = createBrowserHistory();
 
@@ -24,7 +24,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
   combineReducers({
     router: connectRouter(history),
-    app: App.reducer
+    app: global.reducer
   }),
   composeEnhancers(applyMiddleware(routerMiddleware(history)))
 );
