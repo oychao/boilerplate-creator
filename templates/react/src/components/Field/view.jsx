@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { hot } from 'react-hot-loader';
 
-import App from '../App';
+import GlobalStore from '../../store/modules/global';
 
 class Field extends React.PureComponent {
   static propTypes = {
@@ -36,7 +36,7 @@ const mapStateToProps = state => ({
   text: state.app.text
 });
 const mapDispatchToProps = dispatch => ({
-  handleInput: text => dispatch(App.actions.input(text))
+  handleInput: text => dispatch(GlobalStore.actions.input(text))
 });
 
 export default hot(module)(

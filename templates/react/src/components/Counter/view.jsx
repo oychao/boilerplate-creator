@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { hot } from 'react-hot-loader';
 
-import App from '../App';
+import GlobalStore from '../../store/modules/global';
 
 class Counter extends React.PureComponent {
   static propTypes = {
@@ -36,7 +36,7 @@ const mapStateToProps = state => ({
   count: state.app.count
 });
 const mapDispatchToProps = dispatch => ({
-  handleCount: num => dispatch(App.actions.add(num))
+  handleCount: num => dispatch(GlobalStore.actions.add(num))
 });
 
 export default hot(module)(
