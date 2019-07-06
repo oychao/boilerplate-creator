@@ -135,9 +135,13 @@ const validate = async function() {
     }
     return 1;
   } catch (error) {
-    spinner.text = program.config
-      ? chalk.red(`invalid template source, please check if ${program.config} is a valid github repository`)
-      : chalk.red(`invalid template, please check if templates/${program.template} exists on ${templateSource}`);
+    if ('ENOTFOUND' === error.errno) {
+      spinner.text = chalk.red('network error');
+    } else {
+      spinner.text = program.config
+        ? chalk.red(`invalid template source, please check if ${program.config} is a valid github repository`)
+        : chalk.red(`invalid template, please check if templates/${program.template} exists on ${templateSource}`);
+    }
     spinner.fail();
     return -1;
   }
