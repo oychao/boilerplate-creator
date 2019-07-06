@@ -4,11 +4,11 @@ import useLifeCycleChecker from '../hooks/useLifeCycleChecker';
 
 import ThemeContext from '../context/theme';
 
-const ThemedButton = function({ children, onClick }) {
+const ThemedButton = function ({ children, onClick }) {
   useLifeCycleChecker('ThemedButton');
   const theme = useContext(ThemeContext);
   return (
-    <button style={{ ...theme }} onClick={onClick}>
+    <button type="button" style={{ ...theme }} onClick={onClick}>
       {children}
     </button>
   );

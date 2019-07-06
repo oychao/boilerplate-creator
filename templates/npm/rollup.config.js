@@ -5,14 +5,13 @@ export default {
   output: [
     {
       file: 'bin/bundle.js',
-      format: 'umd'
+      format: 'umd',
+      name: 'helloUmd'
     }
   ],
   plugins: [
     babel({
-      exclude: 'node_modules/**',
-      externalHelpers: true,
-      plugins: ['@babel/external-helpers']
+      exclude: 'node_modules/**'
     })
   ],
   external: ['fs', 'path', 'jsonfile']

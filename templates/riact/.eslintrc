@@ -4,6 +4,7 @@
     "node": true,
     "es6": true
   },
+  "extends": "airbnb",
   "parser": "babel-eslint",
   "plugins": ["react"],
   "rules": {
@@ -11,6 +12,17 @@
     "comma-dangle": [1, "never"],
     "semi": [2, "always"],
     "quotes": [2, "single"],
-    "indent": [2, 2]
+    "indent": [2, 2],
+    "global-require": 0,
+    "no-plusplus": 0,
+    "no-param-reassign": 0,
+    "no-new": 0,
+    "func-names": 0,
+    "react/prop-types": 0
+  },
+  "settings": {
+    "react": {
+      "pragma": "Riact" 
+    }
   }
 }

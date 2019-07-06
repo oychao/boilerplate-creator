@@ -7,14 +7,18 @@ import VueLoader from 'vue-loader';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import HappyPack from 'happypack';
+import CompressionPlugin from 'compression-webpack-plugin';
+import {
+  BundleAnalyzerPlugin
+} from 'webpack-bundle-analyzer';
 
 // base config
 const config = {
-  mode: process.env.NODE_ENV,
-  entry: ['./index.js'],
+  mode: process.env.NODE_ENV === 'dll' ? 'none' : process.env.NODE_ENV,
+  entry: ['@babel/polyfill', './index.js'],
   output: {
-    filename: 'js/[name].[chunkhash:8].js',
+    filename: 'js/[name].[hash:8].js',
     path: path.resolve('dist'),
     publicPath: '/'
   },
@@ -26,42 +30,31 @@ const config = {
     extensions: ['.js', '.json', '.vue', '.css', '.less']
   },
   module: {
-    rules: [
-      {
-        test: /\.(css|less)$/,
-        use: [
-          {
-            loader:
-              process.env.NODE_ENV === 'development'
-                ? 'style-loader'
-                : MiniCssExtractPlugin.loader
-          },
-          {
-            loader: 'css-loader'
-          },
-          {
-            loader: 'less-loader'
-          }
-        ]
-      },
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: 'babel-loader'
-          }
-        ]
-      },
-      {
-        test: /\.vue$/,
-        use: [
-          {
-            loader: 'vue-loader'
-          }
-        ]
-      }
-    ]
+    rules: [{
+      test: /\.(css|less)$/,
+      use: [{
+        loader: process.env.NODE_ENV === 'development'
+          ? 'style-loader'
+          : MiniCssExtractPlugin.loader
+      }, {
+        loader: 'css-loader'
+      }, {
+        loader: 'less-loader'
+      }]
+    },
+    {
+      test: /\.js$/,
+      exclude: /node_modules/,
+      use: [{
+        loader: 'happypack/loader'
+      }]
+    },
+    {
+      test: /\.vue$/,
+      use: [{
+        loader: 'vue-loader'
+      }]
+    }]
   },
   devtool: 'eval-source-map',
   devServer: {
@@ -70,22 +63,58 @@ const config = {
     open: true
     // progress: true
   },
-  externals: {},
-  plugins: [
-    new CleanWebpackPlugin(path.resolve(__dirname, 'dist')),
+  externals: {}
+};
+
+if (process.env.NODE_ENV === 'dll') {
+  config.entry = {
+    vendor: [
+      'axios',
+      'vue',
+      'vue-axios',
+      'vue-router',
+      'vuex',
+      'vuex-router-sync',
+      '@babel/polyfill'
+    ]
+  };
+  config.output = {
+    filename: 'js/[name].dll.js',
+    path: path.resolve('dll'),
+    library: '[name]_lib'
+  };
+  config.plugins = [
+    new webpack.DllPlugin({
+      path: path.join(__dirname, 'dll', '[name]-manifest.json'),
+      name: '[name]_lib'
+    })
+  ];
+} else {
+  config.plugins = [
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: 'index.html'
     }),
     new ScriptExtHtmlWebpackPlugin({
       defaultAttribute: 'defer'
     }),
-    new VueLoader.VueLoaderPlugin()
-  ]
-};
+    new VueLoader.VueLoaderPlugin(),
+    new HappyPack({
+      loaders: ['babel-loader']
+    })
+  ];
+}
 
 // development config
 if (process.env.NODE_ENV === 'development') {
+  config.plugins.push(
+    new webpack.DllReferencePlugin({
+      context: path.join(__dirname, 'dll'),
+      manifest: require('./dll/vendor-manifest.json')
+    })
+  );
   config.output.filename = 'js/[name].[hash:8].js';
+  config.devServer.compress = true;
   config.plugins.push(new webpack.HotModuleReplacementPlugin());
   config.optimization = {
     minimize: false
@@ -94,7 +123,7 @@ if (process.env.NODE_ENV === 'development') {
 
 // production config
 if (process.env.NODE_ENV === 'production') {
-  config.devtool = 'source-map';
+  delete config.devtool;
   [
     new webpack.LoaderOptionsPlugin({
       minimize: true
@@ -104,7 +133,10 @@ if (process.env.NODE_ENV === 'production') {
       filename: 'css/[name].[contenthash:8].css',
       chunkFilename: 'css/[name].[contenthash:8].css'
     }),
-    new OptimizeCSSAssetsPlugin({})
+    new OptimizeCSSAssetsPlugin({}),
+    new CompressionPlugin({
+      cache: true
+    })
   ].forEach(plugin => config.plugins.push(plugin));
   config.optimization = {
     minimize: true,

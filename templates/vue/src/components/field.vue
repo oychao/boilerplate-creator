@@ -1,8 +1,11 @@
 <template>
   <div class="field">
-    <input v-model="content" ref="field">
+    <input
+      ref="field"
+      v-model="content"
+    >
     <br>
-    <span>{{status}}</span>
+    <span>{{ status }}</span>
   </div>
 </template>
 
@@ -11,7 +14,7 @@ import { mapActions } from 'vuex';
 
 const EMTPY_MSG = 'Input something please';
 export default {
-  name: 'field',
+  name: 'Field',
   computed: {
     content: {
       get() {
@@ -27,11 +30,11 @@ export default {
         : this.$store.state.content;
     }
   },
-  methods: {
-    ...mapActions(['setContent'])
-  },
   mounted() {
     this.$refs.field.focus();
+  },
+  methods: {
+    ...mapActions(['setContent'])
   }
 };
 </script>

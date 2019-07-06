@@ -8,7 +8,7 @@ const useReducer = function (reducer) {
   }));
   return {
     state,
-    dispatch: action => {
+    dispatch: (action) => {
       setState(reducer(state, action));
     }
   };

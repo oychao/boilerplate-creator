@@ -3,11 +3,11 @@ import {
   useEffect
 } from 'riact';
 
-const useRouter = config => {
+const useRouter = (config) => {
   const [path, setPath] = useState('/');
 
   const refresh = () => {
-    setPath(location.hash.slice(1) || '/');
+    setPath(window.location.hash.slice(1) || '/');
   };
 
   useEffect(() => {

@@ -1,4 +1,4 @@
-import Riact, { useState, useEffect } from 'riact';
+import Riact, { useEffect } from 'riact';
 
 import useLifeCycleChecker from '../hooks/useLifeCycleChecker';
 import useInputModel from '../hooks/useInputModel';
@@ -6,14 +6,14 @@ import useReducer from '../hooks/useReducer';
 
 import ThemedButton from './ThemedButton';
 
-const List = function() {
+const List = function () {
   useLifeCycleChecker('List');
   const { setValue, model: valueModel } = useInputModel('');
-  const { state, dispatch } = useReducer(function(
-    state = { list: [] },
+  const { state, dispatch } = useReducer((
+    initState = { list: [] },
     action
-  ) {
-    const newState = Object.assign({}, state);
+  ) => {
+    const newState = Object.assign({}, initState);
     switch (action.type) {
     case 'ADD':
       if (Array.isArray(action.payload)) {
@@ -28,7 +28,7 @@ const List = function() {
   });
   const { list } = state;
   useEffect(() => {
-    new Promise(resolve => {
+    new Promise((resolve) => {
       setTimeout(() => {
         resolve([
           'pul@puezne.gg',
@@ -37,7 +37,7 @@ const List = function() {
           'beswedrel@ja.yt'
         ]);
       }, 5e2);
-    }).then(data => {
+    }).then((data) => {
       dispatch({
         type: 'ADD',
         payload: data
@@ -61,9 +61,7 @@ const List = function() {
       <ol>
         {list.length === 0
           ? 'loading'
-          : list.map(item => {
-            return <li key={item}>{item}</li>;
-          })}
+          : list.map(item => <li key={item}>{item}</li>)}
       </ol>
     </div>
   );

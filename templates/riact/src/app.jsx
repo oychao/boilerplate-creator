@@ -11,7 +11,7 @@ import Count from './components/Count';
 import ShowList from './components/ShowList';
 import Profile from './components/Profile';
 
-const App = function() {
+const App = function () {
   useLifeCycleChecker('App');
   const activeRoute = useRouter(
     new Map([

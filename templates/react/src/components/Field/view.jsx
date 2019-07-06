@@ -1,17 +1,24 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { hot } from 'react-hot-loader';
 
-import App from '../App';
+import GlobalStore from '../../store/modules/global';
 
 class Field extends React.PureComponent {
+  static propTypes = {
+    text: PropTypes.string.isRequired,
+    handleInput: PropTypes.func.isRequired
+  }
+
   constructor(props) {
     super(props);
     this.handleInput = this.handleInput.bind(this);
   }
 
   handleInput(e) {
-    this.props.handleInput(e.target.value);
+    const { handleInput } = this.props;
+    handleInput(e.target.value);
   }
 
   render() {
@@ -25,11 +32,11 @@ class Field extends React.PureComponent {
   }
 }
 
-const mapStateToProps = (state, props) => ({
+const mapStateToProps = state => ({
   text: state.app.text
 });
-const mapDispatchToProps = (dispatch, props) => ({
-  handleInput: text => dispatch(App.actions.input(text))
+const mapDispatchToProps = dispatch => ({
+  handleInput: text => dispatch(GlobalStore.actions.input(text))
 });
 
 export default hot(module)(

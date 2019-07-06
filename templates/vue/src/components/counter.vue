@@ -1,16 +1,21 @@
 <template>
   <div class="counter">
-    <span>{{count}}</span>
+    <span>{{ count }}</span>
     <br>
-    <button @click="increment">Increment</button>
-    <button @click="decrement">Decrement</button>
+    <button @click="increment">
+      Increment
+    </button>
+    <button @click="decrement">
+      Decrement
+    </button>
   </div>
 </template>
 
 <script>
 import Vuex from 'vuex';
+
 export default {
-  name: 'counter',
+  name: 'Counter',
   computed: {
     ...Vuex.mapGetters(['count'])
   },
