@@ -23,6 +23,7 @@ export default [{
     'promise-jsonfile',
     'readline-sync',
     'shelljs',
-    'fs-extra'
+    'fs-extra',
+    'axios'
   ]
 }];
