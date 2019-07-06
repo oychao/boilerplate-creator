@@ -119,11 +119,7 @@ const initProgram = async function() {
 };
 
 const validate = async function() {
-  const spinner = spinnerEcho(
-    chalk.keyword('gold')(
-      program.config ? 'checking if template source valid' : 'checking if template exists on github'
-    )
-  );
+  const spinner = spinnerEcho(chalk.keyword('gold')(`checking if template ${program.config ? 'source ' : ''}valid`));
   const targetTemplate =
     program.config ||
     `${-1 === templateSource.indexOf('.git') ? templateSource : templateSource.slice(0, -4)}/tree/master/templates/${
