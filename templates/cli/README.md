@@ -1,6 +1,6 @@
 # NOTIFICATION
 
-please update boilerplate-creator to 3.0.0-beta.5,
+please update boilerplate-creator to 3.0.0-beta.6,
 or run commands below to update your local repository configuration.
 
 ```bash
