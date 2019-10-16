@@ -13,7 +13,7 @@ generate common boilerplates
 ### Installation
 
 ```bash
-$ npm i -g boilerplate-creator
+npm i -g boilerplate-creator
 ```
 
 ### Demo
@@ -25,37 +25,37 @@ $ npm i -g boilerplate-creator
 #### Basic usage
 
 ```bash
-$ bpc [options]
+bpc [options]
 ```
 
 #### Create a React project
 
 ```bash
-$ bpc -i helloreact -t react
-$ # react in typescript
-$ bpc -i helloreactts -t react --ts
+bpc -i helloreact -t react
+# react in typescript
+bpc -i helloreactts -t react --ts
 ```
 
 #### Create a Vue project
 
 ```bash
-$ bpc -i hellovue -t vue
-$ # vue in typescript
-$ bpc -i hellovuets -t vue --ts
+bpc -i hellovue -t vue
+# vue in typescript
+bpc -i hellovuets -t vue --ts
 ```
 
 #### Create a NPM package or a CLI tool
 
 ```bash
-$ bpc -i hellonpm -t npm
-$ bpc -i hellonpm -t npm --ts
-$ bpc -i hellocli -t cli
+bpc -i hellonpm -t npm
+bpc -i hellonpm -t npm --ts
+bpc -i hellocli -t cli
 # cli project in typescript not supported
 ```
 
 ### Custom Template Source
 
-boilerplate-creator basiclly just pull templates from GitHub, which means you can set your own template source as well. Note that only github reposities are supported and all templates must be put into a root fold named 'templates', just like this repository.
+boilerplate-creator basiclly just pulls templates from GitHub, which means you can set your own template source as well. Note that only github reposities are supported and all templates must be put into a root fold named 'templates', see [oychao/common-boilerplates](https://github.com/oychao/common-boilerplates).
 
 ```bash
 bpc -c https://github.com/your/repository
@@ -63,10 +63,10 @@ bpc -c https://github.com/your/repository
 bpc -i helloworld -t my-template
 ```
 
-There are 7 templates(npm|npm-ts|cli||react|react-ts|vue|vue-ts) are supported for now, please check the help document for more information, see help document for more information.
+There are 7 templates(npm|npm-ts|cli||react|react-ts|vue|vue-ts) are supported for now, please check the help document for more information.
 
 ```bash
-$ bpc --help
+bpc --help
 ```
 
 ## Licence
