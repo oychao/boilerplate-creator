@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import chalk from 'chalk';
-import program from 'commander';
+import { Command } from 'commander';
 import shell from 'shelljs';
 import ora from 'ora';
 import readline from 'readline-sync';
@@ -23,9 +23,12 @@ const silent = {
   silent: true
 };
 
+const program = new Command();
+const options = program.opts();
+
 // utils tool functions
-const execAsync = async function(directive, config) {
-  return new Promise(function(resolve, reject) {
+const execAsync = async function (directive, config) {
+  return new Promise(function (resolve, reject) {
     shell.exec(
       directive,
       {
@@ -60,7 +63,7 @@ const fExists = target => {
     return false;
   }
 };
-const done = async function(spinner, projectName, isApp, isAutoInstall, startTime) {
+const done = async function (spinner, projectName, isApp, isAutoInstall, startTime) {
   // done
   await fsex.remove('templates');
   await fsex.remove('.git');
@@ -88,7 +91,7 @@ const done = async function(spinner, projectName, isApp, isAutoInstall, startTim
   );
 };
 
-const initProgram = async function() {
+const initProgram = async function () {
   // get template source
   templateSource = (await jsonfile.read(configFilePath)).source;
   // build a program
@@ -110,20 +113,19 @@ const initProgram = async function() {
     .parse(process.argv);
 
   // handle typescript option
-  if (program.ts && program.template.slice(-3, 0) !== '-ts') {
-    program.template += '-ts';
+  if (options.ts && options.template.slice(-3, 0) !== '-ts') {
+    options.template += '-ts';
   }
 
   // check if the project is an app or a npm package
-  isApp = -1 === npmTemps.indexOf(program.template);
+  isApp = -1 === npmTemps.indexOf(options.template);
 };
 
-const validate = async function() {
-  const spinner = spinnerEcho(chalk.keyword('gold')(`checking if template ${program.config ? 'source ' : ''}valid`));
+const validate = async function () {
+  const spinner = spinnerEcho(chalk.keyword('gold')(`checking if template ${options.config ? 'source ' : ''}valid`));
   const targetTemplate =
-    program.config ||
-    `${-1 === templateSource.indexOf('.git') ? templateSource : templateSource.slice(0, -4)}/tree/master/templates/${
-      program.template
+    options.config ||
+    `${-1 === templateSource.indexOf('.git') ? templateSource : templateSource.slice(0, -4)}/tree/master/templates/${options.template
     }`;
   try {
     const res = await axios.get(targetTemplate);
@@ -138,16 +140,16 @@ const validate = async function() {
     if ('ENOTFOUND' === error.errno) {
       spinner.text = chalk.red('network error');
     } else {
-      spinner.text = program.config
-        ? chalk.red(`invalid template source, please check if ${program.config} is a valid github repository`)
-        : chalk.red(`invalid template, please check if templates/${program.template} exists on ${templateSource}`);
+      spinner.text = options.config
+        ? chalk.red(`invalid template source, please check if ${options.config} is a valid github repository`)
+        : chalk.red(`invalid template, please check if templates/${options.template} exists on ${templateSource}`);
     }
     spinner.fail();
     return -1;
   }
 };
 
-const main = async function() {
+const main = async function () {
   await initProgram();
 
   let spinner;
@@ -156,11 +158,12 @@ const main = async function() {
   shell.echo();
   shell.echo(BPC_NAME);
 
-  if (program.config) {
-    if (regexGithubAddr.test(program.config) && -1 !== (await validate())) {
+  if (options.config) {
+
+    if (regexGithubAddr.test(options.config) && -1 !== (await validate())) {
       shell.echo();
       await jsonfile.write(configFilePath, {
-        source: program.config
+        source: options.config
       });
       shell.echo(chalk.green('  template source address updated'));
     }
@@ -173,8 +176,8 @@ const main = async function() {
   }
 
   // check if target folder or file exists
-  const projectName = program.init;
-  if (!program.force && fExists(projectName)) {
+  const projectName = options.init;
+  if (!options.force && fExists(projectName)) {
     shell.echo();
     if (!confirm(`${chalk.keyword('orange')(projectName)} already exists, overwrite it? [y/N]`)) {
       shell.exit(1);
@@ -191,16 +194,16 @@ const main = async function() {
   await execAsync(`git remote add origin ${templateSource}`);
   await execAsync('git config core.sparseCheckout true');
   // only check specific folder
-  await execAsync(`echo templates/${program.template} >> .git/info/sparse-checkout`);
+  await execAsync(`echo templates/${options.template} >> .git/info/sparse-checkout`);
   await execAsync('git pull --depth=1 origin master');
-  await fsex.copy(`templates/${program.template}/`, './');
-  if (program.auto) {
+  await fsex.copy(`templates/${options.template}/`, './');
+  if (options.auto) {
     spinner.text = chalk.magentaBright('project initialized.');
     spinner.succeed();
     spinner = spinnerEcho(chalk.keyword('gold')('installing dependencies'));
     await execAsync('npm i');
   }
-  await done(spinner, projectName, isApp, program.install, start);
+  await done(spinner, projectName, isApp, options.install, start);
 };
 
 main();
