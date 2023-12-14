@@ -137,7 +137,6 @@ const validate = async function () {
     }
     return 1;
   } catch (error) {
-    console.log(error);
     if ('ECONNRESET' === error.code || 'ENOTFOUND' === error.code) {
       spinner.text = chalk.red(`network error, unable to access ${templateSource}`);
     } else {
