@@ -90,7 +90,7 @@ const done = async function (spinner, projectName, isApp, isAutoInstall, startTi
 };
 
 const initProgram = async function () {
-  // get template source
+  // get template source, specified config with higher priority
   templateSource = (await jsonfile.read(configFilePath)).source || options.config;
   // build a program
   program
