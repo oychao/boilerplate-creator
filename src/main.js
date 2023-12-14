@@ -137,8 +137,9 @@ const validate = async function () {
     }
     return 1;
   } catch (error) {
-    if ('ENOTFOUND' === error.errno) {
-      spinner.text = chalk.red('network error');
+    console.log(error);
+    if ('ECONNRESET' === error.code || 'ENOTFOUND' === error.code) {
+      spinner.text = chalk.red(`network error, unable to access ${templateSource}`);
     } else {
       spinner.text = options.config
         ? chalk.red(`invalid template source, please check if ${options.config} is a valid github repository`)
