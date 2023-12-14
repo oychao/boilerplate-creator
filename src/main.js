@@ -16,7 +16,7 @@ let templateSource;
 const configFilePath = path.resolve(__dirname, '..', 'config.json');
 const regexGithubAddr = /^(https:\/\/github.com\/[a-zA-Z\d-]+\/[a-zA-Z\d-]+(\.git)?)$/;
 const BPC_NAME = chalk.bold.blue(`boilerplate-creator ${VERSION}`);
-const npmTemps = ['npm', 'npm-ts', 'cli'];
+const npmTemps = ['npm', 'npm-ts', 'cli', 'cli-ts'];
 const legalTemps = npmTemps.concat(['react', 'react-ts', 'vue', 'vue-ts']);
 const legalTempsHintStr = legalTemps.reduce((acc, temp) => `${acc}|${chalk.yellow(temp)}`, '').slice(1);
 const silent = {
@@ -104,7 +104,7 @@ const initProgram = async function () {
       `set custom source, e.g. ${chalk.yellow('https://github.com/oychao/boilerplate-creator')}`
     )
     .option('-i, --init [project name]', 'initialized a named project', 'helloworld')
-    .option('-t, --template [temp]', `which template to use, [temp] support(${legalTempsHintStr})`, 'react')
+    .option('-t, --template [temp]', `which template to use, [temp] support(${legalTempsHintStr})`, 'npm')
     .option('-f, --force', 'force on non-empty directory')
     .option('-a, --auto', 'automatically install dependencies')
     .option('    --ts', 'use typescript, \'bpc demo -t react-ts\' is equivalent to \'bpc demo -t react --ts\'')
