@@ -191,9 +191,9 @@ const main = async function () {
   await execAsync(`git remote add origin ${templateSource}`);
   await execAsync('git config core.sparseCheckout true');
   // only check specific folder
-  await execAsync(`echo templates / ${options.template} >> .git / info / sparse - checkout`);
+  await execAsync(`echo templates/${options.template} >> .git/info/sparse - checkout`);
   await execAsync('git pull --depth=1 origin master');
-  await fsex.copy(`templates / ${options.template} / `, './');
+  await fsex.copy(`templates/${options.template}/`, './');
   if (options.auto) {
     spinner.text = chalk.magentaBright('project initialized.');
     spinner.succeed();
